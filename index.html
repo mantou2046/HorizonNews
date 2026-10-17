@@ -59,20 +59,38 @@ hr{border:none;border-top:1px solid var(--hz-border);margin:22px 0}
 .pager button:hover{border-color:var(--hz-accent)}
 .pager button:disabled{opacity:.4;cursor:default}
 .m-sec{display:none}
+.mbar{display:none}
+.totop{position:fixed;right:16px;bottom:20px;z-index:60;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--hz-border);background:var(--hz-surface);color:var(--hz-text);font-size:19px;
+  cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.totop.show{opacity:1;pointer-events:auto}
+.m-foot{display:none}
 @media (max-width:1023px){
   .layout{display:block}
-  .sidebar{position:static;height:auto;max-height:42vh;overflow-y:auto;border-right:none;border-bottom:1px solid var(--hz-border);padding-bottom:8px}
+  .mbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:55;
+    background:var(--hz-bg);border-bottom:1px solid var(--hz-border);padding:8px 12px}
+  .mbar button{border:1px solid var(--hz-border);background:var(--hz-surface);color:var(--hz-text);
+    border-radius:8px;padding:6px 14px;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap}
+  .mbar #m-cur{flex:1;font-size:13px;color:var(--hz-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sidebar{display:none}
+  .sidebar.open{display:block;position:fixed;top:50px;left:0;right:0;z-index:54;height:auto;max-height:72vh;
+    overflow-y:auto;background:var(--hz-bg);border-right:none;border-bottom:1px solid var(--hz-border);
+    box-shadow:0 14px 28px rgba(0,0,0,.22);padding-bottom:14px}
   .reader{padding:18px 18px 60px}
-  .reader article{display:block;max-width:none;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid var(--hz-border)}
+  .reader article{display:block;max-width:none;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid var(--hz-border);scroll-margin-top:58px}
   .pager{display:none!important}
   .m-sec{display:block;font-size:19px;font-weight:800;margin:26px 0 4px}
+  .m-foot{display:flex;gap:10px;margin-top:16px}
+  .m-foot button{flex:1;padding:9px;border:1px solid var(--hz-border);background:var(--hz-surface);
+    color:var(--hz-text);border-radius:8px;cursor:pointer;font-size:14px;font-family:inherit}
 }
 </style>
 </head>
 <body>
-<header class="topbar"><h1>Horizon 每日速递 - 2026-10-18</h1><div class="sub">左边点标题 · 右边看全文 ｜ 移动端自动变瀑布流</div></header>
+<header class="topbar"><h1>Horizon 每日速递 - 2026-10-18</h1><div class="sub">PC 左栏点标题读全文 ｜ 移动端顶部「目录」随处切换</div></header>
+<div class="mbar"><button id="m-toc" aria-expanded="false">☰ 目录</button><span id="m-cur"></span><button id="m-top">↑ 顶部</button></div>
 <div class="layout">
-  <aside class="sidebar"><div class="intro"><blockquote>
+  <aside class="sidebar" id="sidebar"><div class="intro"><blockquote>
 <p>从 102 条内容中筛选出 20 条重要资讯。</p>
 </blockquote></div><div class="sec-name">科技新闻</div><button class="nav-item" data-i="0"><span class="t">OpenCode Console 泄露用户 API 密钥</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="1"><span class="t">谢赛宁前实习生创业复活 Sora，进军好莱坞</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="2"><span class="t">新基准测 AI 直觉物理，最强模型仅 53.6 分</span><span class="score-badge" data-tier="good">7.0</span></button><div class="sec-name">科技博客</div><button class="nav-item" data-i="3"><span class="t">llama.cpp 测试生成器修复：规范保持门控与状态恢复</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="4"><span class="t">Pele：将 Mermaid 图渲染为主题化 SVG</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="5"><span class="t">持续学习：让 AI 系统从现实数据中进化</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="6"><span class="t">五设备分布式推理：Qwen3.8 Flash Next 实测</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="7"><span class="t">Strata 采样默认值与路由尾跳参数</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="8"><span class="t">自适应 KV 流式传输：全上下文 27B 模型</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="9"><span class="t">爱沙尼亚开源电子投票系统</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="10"><span class="t">太阳能发电量首次超越核电</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="11"><span class="t">gopls 交互式重构指南</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="12"><span class="t">让 DNS 传播延迟可观测</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="13"><span class="t">orib：重制旧版 Reddit 界面</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="14"><span class="t">Red Curtain：在 AMD 显卡上运行 Fish Audio Drama 3</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="15"><span class="t">llama.cpp b11709 发布：Kolibri-1 模型支持</span><span class="score-badge" data-tier="mid">5.0</span></button><button class="nav-item" data-i="16"><span class="t">珊瑚接触健康邻居可加速恢复</span><span class="score-badge" data-tier="mid">5.0</span></button><button class="nav-item" data-i="17"><span class="t">拆除水坝让东北部鱼类回归</span><span class="score-badge" data-tier="mid">5.0</span></button><div class="sec-name">AI 创作者雷达</div><button class="nav-item" data-i="18"><span class="t">MOSS-Image 核心开发者 AMA：5B DiT 模型技术细节与路线图</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="19"><span class="t">MiniMax H3 多模型工作流生成完整音乐视频：个人实践与参数细节</span><span class="score-badge" data-tier="mid">6.0</span></button></aside>
   <main class="reader"><div class="m-sec">科技新闻</div><article id="item-tech-news-1" data-i="0"><h3><a href="https://twitter.com/opencode/status/2111516673953935833">OpenCode Console 泄露用户 API 密钥</a> ⭐️ 7.0/10</h3><p>OpenCode 团队确认其名为 OpenCode Console 的服务发生凭据泄露，暴露了用户存储的 API 密钥。该服务与 OpenCode 编码代理是相互独立的，仅使用编码代理的用户不受影响。社区讨论指出，受影响的是通过 OpenCode Console（类似 OpenRouter 的 API 中转服务）存储自带密钥（BYOK）的用户，并质疑密钥失效机制与供应链安全。</p>
@@ -90,7 +108,7 @@ hr{border:none;border-top:1px solid var(--hz-border);margin:22px 0}
 </ul>
 </details>
 
-<p><strong>标签</strong>: <code>#security</code>, <code>#api keys</code>, <code>#developer tools</code>, <code>#supply chain</code>, <code>#incident response</code></p></article><article id="item-tech-news-2" data-i="1"><h3><a href="https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247934160&amp;idx=2&amp;sn=907f7864e3e151d1d0d7b19cac800c76">谢赛宁前实习生创业复活 Sora，进军好莱坞</a> ⭐️ 7.0/10</h3><p>据量子位报道，Sora 创造者谢赛宁的一名前实习生正在创办一家初创公司，旨在复活并商业化 Sora，并将其推向好莱坞市场。这一动向表明，尽管 Sora 此前面临不确定性，AI 视频生成领域仍存在持续的商业兴趣。报道未提供公司名称、融资规模、技术细节或具体合作方，因此该计划目前仍处于早期阶段，尚无法确认其实际落地能力。</p>
+<p><strong>标签</strong>: <code>#security</code>, <code>#api keys</code>, <code>#developer tools</code>, <code>#supply chain</code>, <code>#incident response</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="0">下一条 ↓</button></div></article><article id="item-tech-news-2" data-i="1"><h3><a href="https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247934160&amp;idx=2&amp;sn=907f7864e3e151d1d0d7b19cac800c76">谢赛宁前实习生创业复活 Sora，进军好莱坞</a> ⭐️ 7.0/10</h3><p>据量子位报道，Sora 创造者谢赛宁的一名前实习生正在创办一家初创公司，旨在复活并商业化 Sora，并将其推向好莱坞市场。这一动向表明，尽管 Sora 此前面临不确定性，AI 视频生成领域仍存在持续的商业兴趣。报道未提供公司名称、融资规模、技术细节或具体合作方，因此该计划目前仍处于早期阶段，尚无法确认其实际落地能力。</p>
 <p>rss · 量子位 · 10月17日 04:00</p>
 <p><strong>「背景」</strong> OpenAI 此前已停止其 Sora 视频生成模型的运营。据 The Information 报道，梦工厂联合创始人杰弗里·卡岑伯格（Jeffrey Katzenberg）正与曾领导 OpenAI Sora 视频模型、今年早些时候离职的比尔·皮布尔斯（Bill Peebles），以及前 Dropbox 首席财务官苏杰·贾斯瓦（Sujay Jaswa）合作，创办一家为电影制作人训练 AI 视频模型的新公司。</p>
 <p><strong>「影响」</strong> 若该初创公司成功推进，可能为好莱坞影视制作提供新的 AI 视频生成工具，但当前缺乏可验证的产品或合作证据，用户和投资者应谨慎看待这一尚未成形的商业计划。</p>
@@ -101,7 +119,7 @@ hr{border:none;border-top:1px solid var(--hz-border);margin:22px 0}
 </ul>
 </details>
 
-<p><strong>标签</strong>: <code>#AI video generation</code>, <code>#Sora</code>, <code>#startup</code>, <code>#Hollywood</code>, <code>#industry news</code></p></article><article id="item-tech-news-3" data-i="2"><h3><a href="https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&amp;mid=2652735434&amp;idx=3&amp;sn=140353f5aa81e8e8595cea5b5264e4d8">新基准测 AI 直觉物理，最强模型仅 53.6 分</a> ⭐️ 7.0/10</h3><p>一项名为“AI 第六感”的新基准测试了 AI 模型的直觉物理能力，结果显示当前最强模型仅得 53.6 分，远低于人类近乎完美的表现。该基准通过让模型完成人类一眼就能理解的物理直觉任务，揭示了现有 AI 系统在常识物理推理上的重大短板。这一结果凸显了当前 AI 在认知能力上与人类之间的显著差距。</p>
+<p><strong>标签</strong>: <code>#AI video generation</code>, <code>#Sora</code>, <code>#startup</code>, <code>#Hollywood</code>, <code>#industry news</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="1">下一条 ↓</button></div></article><article id="item-tech-news-3" data-i="2"><h3><a href="https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&amp;mid=2652735434&amp;idx=3&amp;sn=140353f5aa81e8e8595cea5b5264e4d8">新基准测 AI 直觉物理，最强模型仅 53.6 分</a> ⭐️ 7.0/10</h3><p>一项名为“AI 第六感”的新基准测试了 AI 模型的直觉物理能力，结果显示当前最强模型仅得 53.6 分，远低于人类近乎完美的表现。该基准通过让模型完成人类一眼就能理解的物理直觉任务，揭示了现有 AI 系统在常识物理推理上的重大短板。这一结果凸显了当前 AI 在认知能力上与人类之间的显著差距。</p>
 <p>rss · 新智元 · 10月17日 04:22</p>
 <p><strong>「背景」</strong> 此前 AI 基准测试多聚焦于知识问答、代码生成或数学推理等显式任务，而直觉物理能力——即无需明确线索就能理解物体运动、空间关系等物理常识——长期缺乏系统评估。Scale AI 与 Elorian 新推出的“人类第六感”（HSS）基准正是针对这一空白，测试多模态大模型在隐含情境中的直觉推理表现。</p>
 <p><strong>「影响」</strong> 这一结果对依赖 AI 进行物理世界推理的应用（如机器人操作、自动驾驶和物理模拟）提出了警示，表明现有模型在需要直觉物理判断的场景中可能无法可靠工作。开发者应关注此类基准的评测结果，并在部署前对模型进行针对性的物理常识测试。</p>
@@ -112,79 +130,80 @@ hr{border:none;border-top:1px solid var(--hz-border);margin:22px 0}
 </ul>
 </details>
 
-<p><strong>标签</strong>: <code>#AI benchmarks</code>, <code>#intuitive physics</code>, <code>#machine learning</code>, <code>#cognitive science</code>, <code>#AI limitations</code></p></article><div class="m-sec">科技博客</div><article id="item-tech-blog-1" data-i="3"><h3><a href="https://github.com/ggml-org/llama.cpp/releases/tag/b11712">llama.cpp 测试生成器修复：规范保持门控与状态恢复</a> ⭐️ 7.0/10</h3><p>github · github-actions[bot] · 10月17日 14:01</p>
+<p><strong>标签</strong>: <code>#AI benchmarks</code>, <code>#intuitive physics</code>, <code>#machine learning</code>, <code>#cognitive science</code>, <code>#AI limitations</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="2">下一条 ↓</button></div></article><div class="m-sec">科技博客</div><article id="item-tech-blog-1" data-i="3"><h3><a href="https://github.com/ggml-org/llama.cpp/releases/tag/b11712">llama.cpp 测试生成器修复：规范保持门控与状态恢复</a> ⭐️ 7.0/10</h3><p>github · github-actions[bot] · 10月17日 14:01</p>
 <p><strong>「背景」</strong> llama.cpp 的测试基础设施在生成随机模型时，每个张量独立采样，破坏了规范保持残差门控的 alpha^2 + beta^2 == 1 不变量，导致状态恢复测试失败。</p>
 <p><strong>「方案」</strong> 作者将张量填充规则重构为按张量名称子串索引的表格，统一了写入路径，并修复了测试生成器中的随机数生成逻辑，使生成的模型与参考模型逐位一致。</p>
 <p><strong>「启示」</strong> 该修复展示了测试基础设施中数值不变量与随机数生成器之间的微妙关系，为类似测试生成器提供了可迁移的洞察。</p>
-<p><strong>标签</strong>: <code>#llama.cpp</code>, <code>#test infrastructure</code>, <code>#random model generation</code>, <code>#numerical invariants</code>, <code>#state restore</code></p></article><article id="item-tech-blog-2" data-i="4"><h3><a href="https://pele.run/">Pele：将 Mermaid 图渲染为主题化 SVG</a> ⭐️ 7.0/10</h3><p>hackernews · dchest · 10月17日 15:55 · <a href="https://news.ycombinator.com/item?id=50132193">社区讨论</a></p>
+<p><strong>标签</strong>: <code>#llama.cpp</code>, <code>#test infrastructure</code>, <code>#random model generation</code>, <code>#numerical invariants</code>, <code>#state restore</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="3">下一条 ↓</button></div></article><article id="item-tech-blog-2" data-i="4"><h3><a href="https://pele.run/">Pele：将 Mermaid 图渲染为主题化 SVG</a> ⭐️ 7.0/10</h3><p>hackernews · dchest · 10月17日 15:55 · <a href="https://news.ycombinator.com/item?id=50132193">社区讨论</a></p>
 <p><strong>「背景」</strong> Mermaid 是常用的图表描述语言，但官方渲染库通常依赖浏览器环境来生成 SVG，这限制了它在非浏览器场景（如服务端、命令行或桌面应用）中的使用。作者 dchest 开发了 Pele，旨在解决这一痛点。</p>
 <p><strong>「方案」</strong> Pele 是一个用 Rust 编写、编译为 WASM 的工具，它实现了自己的布局引擎，能够将 Mermaid 图渲染为可主题化的 SVG，而无需浏览器。作者在文档中坦诚地说明了局限性：并非所有 Mermaid 功能都受支持，且布局质量不如官方实现精细。尽管如此，Pele 为需要嵌入 Mermaid 图的非浏览器环境提供了实用的替代方案。社区评论也指出，官方 Mermaid 库仍可能需要浏览器环境，因此 Pele 在这方面具有价值。</p>
 <p><strong>「启示」</strong> Pele 是一个务实且文档完善的工具，它通过 Rust/WASM 核心和自定义布局引擎，解决了在非浏览器环境中渲染 Mermaid 图的问题。虽然其功能范围有限，但为特定场景提供了有效的解决方案。</p>
-<p><strong>标签</strong>: <code>#Mermaid</code>, <code>#SVG</code>, <code>#WASM</code>, <code>#Rust</code>, <code>#diagramming</code></p></article><article id="item-tech-blog-3" data-i="5"><h3><a href="https://www.infoq.cn/article/JMZ6WUx4a4cVqAwhwviU?utm_source=rss&amp;utm_medium=article">持续学习：让 AI 系统从现实数据中进化</a> ⭐️ 7.0/10</h3><p>rss · InfoQ 中文站 · 10月17日 10:00</p>
+<p><strong>标签</strong>: <code>#Mermaid</code>, <code>#SVG</code>, <code>#WASM</code>, <code>#Rust</code>, <code>#diagramming</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="4">下一条 ↓</button></div></article><article id="item-tech-blog-3" data-i="5"><h3><a href="https://www.infoq.cn/article/JMZ6WUx4a4cVqAwhwviU?utm_source=rss&amp;utm_medium=article">持续学习：让 AI 系统从现实数据中进化</a> ⭐️ 7.0/10</h3><p>rss · InfoQ 中文站 · 10月17日 10:00</p>
 <p><strong>「背景」</strong> 静态数据集是当前 AI 系统的主要训练基础，但现实世界的数据分布会随时间变化，导致模型性能下降。</p>
 <p><strong>「方案」</strong> 作者提出构建持续学习系统，让 AI 从实时交互中不断更新，而非依赖一次性数据集。</p>
 <p><strong>「启示」</strong> 持续学习是 AI 系统适应现实的关键，能提升长期部署的鲁棒性。</p>
-<p><strong>标签</strong>: <code>#continuous learning</code>, <code>#AI systems</code>, <code>#dataset</code>, <code>#real-world deployment</code>, <code>#engineering</code></p></article><article id="item-tech-blog-4" data-i="6"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8ley0/2_gaming_pcs_an_m4_pro_macbook_over_ethernet_2/">五设备分布式推理：Qwen3.8 Flash Next 实测</a> ⭐️ 7.0/10</h3><p>reddit · r/LocalLLaMA · /u/StayLameBro · 10月17日 21:13</p>
+<p><strong>标签</strong>: <code>#continuous learning</code>, <code>#AI systems</code>, <code>#dataset</code>, <code>#real-world deployment</code>, <code>#engineering</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="5">下一条 ↓</button></div></article><article id="item-tech-blog-4" data-i="6"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8ley0/2_gaming_pcs_an_m4_pro_macbook_over_ethernet_2/">五设备分布式推理：Qwen3.8 Flash Next 实测</a> ⭐️ 7.0/10</h3><p>reddit · r/LocalLLaMA · /u/StayLameBro · 10月17日 21:13</p>
 <p><strong>「背景」</strong> Qwen 3.8 Flash Next 是一个 48 层、每层 512 专家的混合专家模型，即使量化到 3-bit 也远超作者 24 GB MacBook 的承载能力。作者因此尝试把家中五台设备——两台游戏 PC、一台 M4 Pro MacBook 和两台 iPhone 17 Pro Max——串联成一台推理机，以运行这个单机无法容纳的模型。</p>
 <p><strong>「方案」</strong> 作者将模型按层拆分：PC 1（RTX 2060 Super）负责第 0–9 层、输出层和模型自带的多 token 预测草稿头；MacBook 负责第 10–29 层；PC 2（RX 9060 XT）负责第 30–47 层；两台 iPhone 则承担第 10–18 层中每 token 选出的 10 个专家，Mac 通过 USB-C 将专家选择发送给手机，手机 GPU 约 1 ms 内返回结果，Mac 自身保留最常用专家。所有权重常驻 VRAM、固定内存或统一内存，不流式读取也不换页。为避免五设备串行等待，作者采用流水线推测：草稿头先猜出后续几个 token，整条链路一次校验，同时 PC 1 已开始起草下一批，平均每步约 2.2 个 token。实测（temp 0.6、top-p 0.95、top-k 20、中等思考、真实代码提示）显示：16k 上下文写入 42 tok/s、读取 728–744 tok/s；32k 写入 39–41 tok/s、读取 844–852 tok/s；60k 写入 37–39 tok/s、读取 856–895 tok/s。缓存提示后的短续写约 0.5 秒启动，含新工具输出的回合约 2.9 秒固定开销加 768 tok/s。当前布局受 PC 2 的 16 GB 限制，服务 69.6k 上下文；另一布局将两层移至 PC 1 并保留 8-bit KV，可读超 164k token，60k 写入 31–33 tok/s；完整 262k 需每台手机各持一层注意力缓存，因一台 A19 暂时离开而尚未运行。作者认为长提示读取受 PC 2 主机内存专家跨 PCIe 传输限制，约 980 tok/s 封顶。除 Mac 专家缓存改变部分和顺序外，所有改动在构造上或分布上精确，但针对今日改动的 KL 校验尚未执行。</p>
 <p><strong>「启示」</strong> 作者证明，通过流水线推测和精细的层/专家分配，五台异构消费级设备可以协同运行远超单机容量的 MoE 模型，并在 60k 上下文下维持约 37–39 tok/s 的写入速度。这一方案展示了分布式推理的可行性与性能上限，但结果依赖自报数据，且质量校验尚未完成，长期可复现性仍待验证。</p>
-<p><strong>标签</strong>: <code>#distributed inference</code>, <code>#mixture-of-experts</code>, <code>#pipelined speculation</code>, <code>#hardware</code>, <code>#performance</code></p></article><article id="item-tech-blog-5" data-i="7"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8lwa1/if_youre_on_strata_before_0145_and_your_client/">Strata 采样默认值与路由尾跳参数</a> ⭐️ 7.0/10</h3><p>reddit · r/LocalLLaMA · /u/Distinct-Pie2389 · 10月17日 21:34</p>
+<p><strong>标签</strong>: <code>#distributed inference</code>, <code>#mixture-of-experts</code>, <code>#pipelined speculation</code>, <code>#hardware</code>, <code>#performance</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="6">下一条 ↓</button></div></article><article id="item-tech-blog-5" data-i="7"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8lwa1/if_youre_on_strata_before_0145_and_your_client/">Strata 采样默认值与路由尾跳参数</a> ⭐️ 7.0/10</h3><p>reddit · r/LocalLLaMA · /u/Distinct-Pie2389 · 10月17日 21:34</p>
 <p><strong>「背景」</strong> Strata 0.1.45 之前的版本在未设置采样参数时默认使用贪婪解码，这会导致模型输出循环。同时，路由尾跳参数 STRATA_ROUTE_TAIL_SKIP 的默认值会影响推理质量与速度的权衡。</p>
 <p><strong>「方案」</strong> 作者在迁移到 UD-IQ4_XS 量化时发现，旧版本在无采样配置下会贪婪解码，导致输出循环。0.1.45 版本修复了此问题，为思考和非思考模式分别设置了合理的默认采样参数。此外，作者通过 A/B 测试发现，将 STRATA_ROUTE_TAIL_SKIP 设为 0 可以提升推理质量，但会降低速度，因此建议根据需求权衡选择。</p>
 <p><strong>「启示」</strong> 对于追求质量的用户，建议将 STRATA_ROUTE_TAIL_SKIP 设为 0，并注意采样参数的默认值。</p>
-<p><strong>标签</strong>: <code>#Strata</code>, <code>#sampling</code>, <code>#quantization</code>, <code>#performance</code>, <code>#LLM inference</code></p></article><article id="item-tech-blog-6" data-i="8"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x89ptz/qwen_27b_iq4_xs_q8q4_kv_at_full_262k_context_on_a/">自适应 KV 流式传输：全上下文 27B 模型</a> ⭐️ 7.0/10</h3><p>reddit · r/LocalLLaMA · /u/bottlestreet3d · 10月17日 13:01</p>
+<p><strong>标签</strong>: <code>#Strata</code>, <code>#sampling</code>, <code>#quantization</code>, <code>#performance</code>, <code>#LLM inference</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="7">下一条 ↓</button></div></article><article id="item-tech-blog-6" data-i="8"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x89ptz/qwen_27b_iq4_xs_q8q4_kv_at_full_262k_context_on_a/">自适应 KV 流式传输：全上下文 27B 模型</a> ⭐️ 7.0/10</h3><p>reddit · r/LocalLLaMA · /u/bottlestreet3d · 10月17日 13:01</p>
 <p><strong>「背景」</strong> 在 16GB 显存的 RX 9070 XT 上运行 27B 模型，全 262k 上下文窗口需要约 7.4GB 的 KV 缓存，而模型权重已占用 14.3GB，导致显存不足。</p>
 <p><strong>「方案」</strong> 作者将自适应 KV 流式传输移植到 ROCm/HIP，通过异步流式传输将 KV 缓存保留在主机内存中，同时利用 SDMA 进行预填充和解码。此外，还集成了 RDNA 4 优化，包括 4 行多列 mmvq、SwiGLU 融合、单队列异步 HIP 图等。</p>
 <p><strong>「启示」</strong> 在 16GB 显存上，通过自适应 KV 流式传输和 RDNA 4 优化，可以实现全 262k 上下文窗口的高效运行，解码速度达到 80+ t/s。</p>
-<p><strong>标签</strong>: <code>#llama.cpp</code>, <code>#ROCm</code>, <code>#KV cache</code>, <code>#AMD GPU</code>, <code>#adaptive KV streaming</code></p></article><article id="item-tech-blog-7" data-i="9"><h3><a href="https://github.com/valimised/ivxv">爱沙尼亚开源电子投票系统</a> ⭐️ 6.0/10</h3><p>hackernews · theanonymousone · 10月17日 03:18 · <a href="https://news.ycombinator.com/item?id=50127586">社区讨论</a></p>
+<p><strong>标签</strong>: <code>#llama.cpp</code>, <code>#ROCm</code>, <code>#KV cache</code>, <code>#AMD GPU</code>, <code>#adaptive KV streaming</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="8">下一条 ↓</button></div></article><article id="item-tech-blog-7" data-i="9"><h3><a href="https://github.com/valimised/ivxv">爱沙尼亚开源电子投票系统</a> ⭐️ 6.0/10</h3><p>hackernews · theanonymousone · 10月17日 03:18 · <a href="https://news.ycombinator.com/item?id=50127586">社区讨论</a></p>
 <p><strong>「背景」</strong> 爱沙尼亚的电子投票系统（ivxv）是一个开源项目，旨在通过公开源代码来提升选举系统的透明度和可验证性。该系统允许选民在线投票，并依赖软件和硬件的组合来确保投票的准确性和安全性。</p>
 <p><strong>「方案」</strong> 该系统采用开源方式，将源代码公开在 GitHub 上，以便公众审查和验证。通过公开代码，系统能够接受外部审计，从而增强信任。然而，软件本身无法完全保证选举的安全性，因为需要验证机器的实际运行情况。</p>
 <p><strong>「启示」</strong> 开源电子投票系统在爱沙尼亚已被广泛接受和使用，但安全性依赖于系统的透明度和可验证性，而非仅靠软件本身。</p>
-<p><strong>标签</strong>: <code>#e-voting</code>, <code>#open-source</code>, <code>#Estonia</code>, <code>#security</code>, <code>#software</code></p></article><article id="item-tech-blog-8" data-i="10"><h3><a href="https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/">太阳能发电量首次超越核电</a> ⭐️ 6.0/10</h3><p>hackernews · xbmcuser · 10月17日 14:01 · <a href="https://news.ycombinator.com/item?id=50131256">社区讨论</a></p>
+<p><strong>标签</strong>: <code>#e-voting</code>, <code>#open-source</code>, <code>#Estonia</code>, <code>#security</code>, <code>#software</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="9">下一条 ↓</button></div></article><article id="item-tech-blog-8" data-i="10"><h3><a href="https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/">太阳能发电量首次超越核电</a> ⭐️ 6.0/10</h3><p>hackernews · xbmcuser · 10月17日 14:01 · <a href="https://news.ycombinator.com/item?id=50131256">社区讨论</a></p>
 <p><strong>「背景」</strong> 太阳能发电量首次超过核电，这是一个重要的里程碑。尽管核电的容量因子更高，但太阳能发电量增长迅速，已超过核电。</p>
 <p><strong>「方案」</strong> 太阳能发电量首次超过核电，这是一个重要的里程碑。尽管核电的容量因子更高，但太阳能发电量增长迅速，已超过核电。</p>
 <p><strong>「启示」</strong> 太阳能发电量首次超过核电，这是一个重要的里程碑。尽管核电的容量因子更高，但太阳能发电量增长迅速，已超过核电。</p>
-<p><strong>标签</strong>: <code>#solar</code>, <code>#nuclear</code>, <code>#renewables</code>, <code>#energy-generation</code>, <code>#capacity-factor</code></p></article><article id="item-tech-blog-9" data-i="11"><h3><a href="https://go.dev/blog/interactive-refactoring">gopls 交互式重构指南</a> ⭐️ 6.0/10</h3><p>rss · Lobsters · 10月17日 01:12</p>
+<p><strong>标签</strong>: <code>#solar</code>, <code>#nuclear</code>, <code>#renewables</code>, <code>#energy-generation</code>, <code>#capacity-factor</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="10">下一条 ↓</button></div></article><article id="item-tech-blog-9" data-i="11"><h3><a href="https://go.dev/blog/interactive-refactoring">gopls 交互式重构指南</a> ⭐️ 6.0/10</h3><p>rss · Lobsters · 10月17日 01:12</p>
 <p><strong>「背景」</strong> gopls 是 Go 语言服务器协议（LSP）的实现，为编辑器提供智能代码补全、跳转定义和重构等功能。本文介绍如何利用 gopls 的交互式重构能力，在 IDE 中高效地重命名、提取函数和移动代码。</p>
 <p><strong>「方案」</strong> gopls 的交互式重构功能基于 LSP 协议实现，支持重命名、提取函数和移动代码等操作。重命名功能可以安全地重命名变量、函数和类型，并自动更新所有引用。提取函数功能可以将选中的代码块提取为独立函数，并自动处理参数和返回值。移动代码功能可以跨文件移动函数或类型定义。这些功能通过编辑器集成，提供实时的代码重构体验。</p>
 <p><strong>「启示」</strong> gopls 的交互式重构功能为 Go 开发者提供了强大的代码重构工具，能够显著提升代码质量和开发效率。</p>
-<p><strong>标签</strong>: <code>#gopls</code>, <code>#refactoring</code>, <code>#Go</code>, <code>#LSP</code>, <code>#IDE</code></p></article><article id="item-tech-blog-10" data-i="12"><h3><a href="https://www.davepacheco.net/blog/2025/developing-for-debugging-dns-propagation/">让 DNS 传播延迟可观测</a> ⭐️ 6.0/10</h3><p>rss · Lobsters · 10月17日 07:21</p>
+<p><strong>标签</strong>: <code>#gopls</code>, <code>#refactoring</code>, <code>#Go</code>, <code>#LSP</code>, <code>#IDE</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="11">下一条 ↓</button></div></article><article id="item-tech-blog-10" data-i="12"><h3><a href="https://www.davepacheco.net/blog/2025/developing-for-debugging-dns-propagation/">让 DNS 传播延迟可观测</a> ⭐️ 6.0/10</h3><p>rss · Lobsters · 10月17日 07:21</p>
 <p><strong>「背景」</strong> DNS 记录变更后，传播延迟难以观测，导致排查问题困难。</p>
 <p><strong>「方案」</strong> 在 DNS 系统中引入一个“最后传播时间戳”字段，记录每次传播的完成时间，从而让延迟变得可观测。</p>
 <p><strong>「启示」</strong> 通过记录传播时间戳，可以清晰观测 DNS 传播延迟，便于调试和优化。</p>
-<p><strong>标签</strong>: <code>#DNS</code>, <code>#debugging</code>, <code>#observability</code>, <code>#propagation</code>, <code>#engineering</code></p></article><article id="item-tech-blog-11" data-i="13"><h3><a href="https://github.com/rajtilakjee/orib">orib：重制旧版 Reddit 界面</a> ⭐️ 6.0/10</h3><p>rss · Lobsters · 10月17日 04:22</p>
+<p><strong>标签</strong>: <code>#DNS</code>, <code>#debugging</code>, <code>#observability</code>, <code>#propagation</code>, <code>#engineering</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="12">下一条 ↓</button></div></article><article id="item-tech-blog-11" data-i="13"><h3><a href="https://github.com/rajtilakjee/orib">orib：重制旧版 Reddit 界面</a> ⭐️ 6.0/10</h3><p>rss · Lobsters · 10月17日 04:22</p>
 <p><strong>「背景」</strong> orib 是一个旨在重制旧版 Reddit 界面的项目，它通过浏览器扩展或用户脚本的形式，为那些怀念经典 Reddit 布局的用户提供熟悉的浏览体验。</p>
 <p><strong>「方案」</strong> 该项目通过用户脚本或浏览器扩展实现，在浏览器中注入自定义 CSS 和 JavaScript，以恢复旧版 Reddit 的视觉风格和交互方式。它可能包含对旧版界面元素的模拟，如帖子列表、评论区和导航栏的布局，并可能提供一些增强功能，如更简洁的界面或改进的可用性。</p>
 <p><strong>「启示」</strong> orib 项目展示了如何通过用户脚本或扩展来定制网页界面，为那些偏好旧版设计的用户提供了一种实用的解决方案。</p>
-<p><strong>标签</strong>: <code>#reddit</code>, <code>#interface</code>, <code>#web</code>, <code>#userscript</code>, <code>#announcement</code></p></article><article id="item-tech-blog-12" data-i="14"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8kces/fish_audio_drama_3_says_it_needs_a_48_gb_nvidia/">Red Curtain：在 AMD 显卡上运行 Fish Audio Drama 3</a> ⭐️ 6.0/10</h3><p>reddit · r/LocalLLaMA · /u/fechyyy · 10月17日 20:27</p>
+<p><strong>标签</strong>: <code>#reddit</code>, <code>#interface</code>, <code>#web</code>, <code>#userscript</code>, <code>#announcement</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="13">下一条 ↓</button></div></article><article id="item-tech-blog-12" data-i="14"><h3><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x8kces/fish_audio_drama_3_says_it_needs_a_48_gb_nvidia/">Red Curtain：在 AMD 显卡上运行 Fish Audio Drama 3</a> ⭐️ 6.0/10</h3><p>reddit · r/LocalLLaMA · /u/fechyyy · 10月17日 20:27</p>
 <p><strong>「背景」</strong> Fish Audio Drama 3 是一个需要 48 GB NVIDIA 显存的音频模型，但作者只有一张 16 GB 的 AMD RX 9070 显卡。为了在消费级硬件上运行这个模型，作者开发了 Red Curtain 方案。</p>
 <p><strong>「方案」</strong> Red Curtain 的核心思路是将模型拆分为两部分：FP8 精度的专家层（约 32 GB）保留在系统内存中，只有实际被调用的专家层才会被缓存到 GPU 上。模型本身是 35B 参数的 MoE 架构，每次推理只激活约 3B 参数。在作者的 RX 9070 上，模型加载耗时约 17 秒，生成 3.3 秒的语音需要约 13 秒，生成 11.6 秒的语音需要约 37 秒。显存占用约 11-12 GB，内存占用约 35 GB。该方案还包含一个简单的 Web 界面，支持语音克隆、多说话人脚本和多种音效标签。</p>
 <p><strong>「启示」</strong> Red Curtain 展示了在显存受限的消费级硬件上运行大型 MoE 音频模型的可行方案，通过将专家层卸载到系统内存，实现了在 16 GB 显存上运行 35B 参数模型的目标。</p>
-<p><strong>标签</strong>: <code>#Fish Audio Drama 3</code>, <code>#AMD RX 9070</code>, <code>#VRAM optimization</code>, <code>#MoE inference</code>, <code>#Red Curtain</code></p></article><article id="item-tech-blog-13" data-i="15"><h3><a href="https://github.com/ggml-org/llama.cpp/releases/tag/b11709">llama.cpp b11709 发布：Kolibri-1 模型支持</a> ⭐️ 5.0/10</h3><p>github · github-actions[bot] · 10月17日 12:28</p>
+<p><strong>标签</strong>: <code>#Fish Audio Drama 3</code>, <code>#AMD RX 9070</code>, <code>#VRAM optimization</code>, <code>#MoE inference</code>, <code>#Red Curtain</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="14">下一条 ↓</button></div></article><article id="item-tech-blog-13" data-i="15"><h3><a href="https://github.com/ggml-org/llama.cpp/releases/tag/b11709">llama.cpp b11709 发布：Kolibri-1 模型支持</a> ⭐️ 5.0/10</h3><p>github · github-actions[bot] · 10月17日 12:28</p>
 <p><strong>「背景」</strong> llama.cpp 的 b11709 版本为 Kolibri-1 模型添加了支持，这是一个 78B 参数的双语（德/英）MoE 推理模型，具有 3.46B 活跃参数。该模型采用 50 层架构，包含 384 个路由专家和一个共享专家，并使用了滑动窗口注意力机制。</p>
 <p><strong>「方案」</strong> 该版本实现了 Kolibri-1 模型的完整推理支持，包括：滑动窗口注意力（513 窗口）、GQA 注意力机制（48 个查询头对 4 个 KV 头）、QK-RMSNorm 归一化、以及基于 sigmoid 的专家路由权重。模型转换器复用了 AfmoeModel 的逐专家检查点布局，并添加了三个张量名称（post_attn_norm、post_ffn_norm、moe.router.expert_bias）到映射中。</p>
 <p><strong>「启示」</strong> Kolibri-1 模型支持展示了 llama.cpp 对复杂 MoE 架构的适应能力，通过滑动窗口注意力和专家路由机制，为多语言推理任务提供了高效的基础设施。</p>
-<p><strong>标签</strong>: <code>#llama.cpp</code>, <code>#release-notes</code>, <code>#model-support</code>, <code>#MoE</code>, <code>#GGML</code></p></article><article id="item-tech-blog-14" data-i="16"><h3><a href="https://www.nature.com/articles/d41586-026-03266-x">珊瑚接触健康邻居可加速恢复</a> ⭐️ 5.0/10</h3><p>hackernews · alkyon · 10月16日 23:38 · <a href="https://news.ycombinator.com/item?id=50126253">社区讨论</a></p>
+<p><strong>标签</strong>: <code>#llama.cpp</code>, <code>#release-notes</code>, <code>#model-support</code>, <code>#MoE</code>, <code>#GGML</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="15">下一条 ↓</button></div></article><article id="item-tech-blog-14" data-i="16"><h3><a href="https://www.nature.com/articles/d41586-026-03266-x">珊瑚接触健康邻居可加速恢复</a> ⭐️ 5.0/10</h3><p>hackernews · alkyon · 10月16日 23:38 · <a href="https://news.ycombinator.com/item?id=50126253">社区讨论</a></p>
 <p><strong>「背景」</strong> 珊瑚白化是海洋生态系统面临的主要威胁之一，当珊瑚与健康邻居接触时，其恢复速度可能显著加快。</p>
 <p><strong>「方案」</strong> 研究发现，珊瑚在接触健康邻居后，其白化恢复过程明显加速。这一现象表明，珊瑚之间的相互作用可能对恢复过程有重要影响。</p>
 <p><strong>「启示」</strong> 珊瑚白化恢复不仅取决于环境条件，还受到邻近珊瑚健康状况的影响，这为珊瑚礁保护提供了新的思路。</p>
-<p><strong>标签</strong>: <code>#coral bleaching</code>, <code>#marine biology</code>, <code>#climate change</code>, <code>#reef ecology</code></p></article><article id="item-tech-blog-15" data-i="17"><h3><a href="https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/">拆除水坝让东北部鱼类回归</a> ⭐️ 5.0/10</h3><p>hackernews · sohkamyung · 10月16日 23:47 · <a href="https://news.ycombinator.com/item?id=50126312">社区讨论</a></p>
+<p><strong>标签</strong>: <code>#coral bleaching</code>, <code>#marine biology</code>, <code>#climate change</code>, <code>#reef ecology</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="16">下一条 ↓</button></div></article><article id="item-tech-blog-15" data-i="17"><h3><a href="https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/">拆除水坝让东北部鱼类回归</a> ⭐️ 5.0/10</h3><p>hackernews · sohkamyung · 10月16日 23:47 · <a href="https://news.ycombinator.com/item?id=50126312">社区讨论</a></p>
 <p><strong>「背景」</strong> 美国东北部的水坝阻碍了洄游鱼类的自然通道，导致鲑鱼、鲱鱼等种群数量下降。拆除这些小型水坝成为恢复鱼类栖息地的关键措施，但工程上需要权衡生态效益与水电、防洪等既有功能。</p>
 <p><strong>「方案」</strong> 该地区的拆除行动逐步推进，通过移除小型障碍物恢复河流连通性，让鱼类重新到达上游产卵地。文章提到，拆除水坝后，鲱鱼等物种的洄游通道得以重建，但缺乏具体的种群恢复数据或长期监测结果。</p>
 <p><strong>「启示」</strong> 拆除水坝是恢复河流生态系统的有效手段，但需要更全面的评估来平衡生态、能源和防洪需求。</p>
-<p><strong>标签</strong>: <code>#dam removal</code>, <code>#fish restoration</code>, <code>#ecology</code>, <code>#northeastern US</code></p></article><div class="m-sec">AI 创作者雷达</div><article id="item-ai-creator-1" data-i="18"><h3><a href="https://www.reddit.com/r/StableDiffusion/comments/1x7zf1r/hey_guys_im_one_of_the_core_developers_of/">MOSS-Image 核心开发者 AMA：5B DiT 模型技术细节与路线图</a> ⭐️ 7.0/10</h3><p>MOSS-Image 的核心开发者在 Reddit 的 r/StableDiffusion 版块发起 AMA，介绍其团队刚开源的 5B DiT 图像生成模型。该模型开发历时六个月，重点聚焦文本渲染、布局可控生成，并旨在为社区微调提供灵活基础。开发者表示将尽可能开放地回应技术细节与后续路线图问题。</p>
+<p><strong>标签</strong>: <code>#dam removal</code>, <code>#fish restoration</code>, <code>#ecology</code>, <code>#northeastern US</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="17">下一条 ↓</button></div></article><div class="m-sec">AI 创作者雷达</div><article id="item-ai-creator-1" data-i="18"><h3><a href="https://www.reddit.com/r/StableDiffusion/comments/1x7zf1r/hey_guys_im_one_of_the_core_developers_of/">MOSS-Image 核心开发者 AMA：5B DiT 模型技术细节与路线图</a> ⭐️ 7.0/10</h3><p>MOSS-Image 的核心开发者在 Reddit 的 r/StableDiffusion 版块发起 AMA，介绍其团队刚开源的 5B DiT 图像生成模型。该模型开发历时六个月，重点聚焦文本渲染、布局可控生成，并旨在为社区微调提供灵活基础。开发者表示将尽可能开放地回应技术细节与后续路线图问题。</p>
 <p>reddit · r/StableDiffusion · /u/KonoDIOda_666 · 10月17日 02:58</p>
 <p><strong>「为何现在值得关注」</strong> MOSS-Image 是一个具体的、新近开源的 5B DiT 模型，且其核心开发者正在直接与社区对话，这为创作者提供了获取技术细节和未来规划的一手渠道。不过，该模型的实际影响尚未确立，此次 AMA 更多是社区互动事件，而非重大产品变化。</p>
 <p><strong>「内容切入角度」</strong> 可做角度：从 MOSS-Image 核心开发者的 AMA 出发，梳理该 5B DiT 模型在文本渲染与布局控制上的技术设计，以及开发者对社区微调生态的规划，同时呈现社区用户对模型实际体验的初步反馈。</p>
 <p><strong>「社区讨论」</strong> 有社区用户表示，MOSS-Image 在开箱即用方面解决了 Krea 2 即使配合 LoRA 仍难以处理的一些问题，且其训练数据包含未审查图像，认为这为后续微调提供了良好基础。另有用户分享了使用基础模型在 cfg4、39 步、约 1.5MP 设置下生成的图像。这些属于个别体验，尚不足以代表广泛共识。</p>
-<p><strong>标签</strong>: <code>#MOSS-Image</code>, <code>#Open-Source Model</code>, <code>#Image Generation</code>, <code>#DiT</code>, <code>#AMA</code></p></article><article id="item-ai-creator-2" data-i="19"><h3><a href="https://www.reddit.com/r/StableDiffusion/comments/1x8h2gc/blown_away_by_minimax_h3_sometimes_it_nailed_this/">MiniMax H3 多模型工作流生成完整音乐视频：个人实践与参数细节</a> ⭐️ 6.0/10</h3><p>用户分享了一个在 ComfyUI 中通过多模型工作流生成完整音乐视频的实践。具体流程包括：用 Suno 生成歌曲、Claude 写歌词、GPT image 2 生成故事和角色设定，再由 MiniMax H3 模型分两遍渲染（第一遍 25 步，第二遍用 8 步 768p turbo LoRA、denoise 0.35 做潜空间放大）。作者称全程未做后期编辑，共渲染 45 个镜头，约 8 个 GPU 小时（5090 显卡），并提到通过 MCP/API 让 Claude 自动规划了 28 个场景、逐镜头写提示词、配音并检查音画同步。该工作流已开源在 GitHub。</p>
+<p><strong>标签</strong>: <code>#MOSS-Image</code>, <code>#Open-Source Model</code>, <code>#Image Generation</code>, <code>#DiT</code>, <code>#AMA</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="18">下一条 ↓</button></div></article><article id="item-ai-creator-2" data-i="19"><h3><a href="https://www.reddit.com/r/StableDiffusion/comments/1x8h2gc/blown_away_by_minimax_h3_sometimes_it_nailed_this/">MiniMax H3 多模型工作流生成完整音乐视频：个人实践与参数细节</a> ⭐️ 6.0/10</h3><p>用户分享了一个在 ComfyUI 中通过多模型工作流生成完整音乐视频的实践。具体流程包括：用 Suno 生成歌曲、Claude 写歌词、GPT image 2 生成故事和角色设定，再由 MiniMax H3 模型分两遍渲染（第一遍 25 步，第二遍用 8 步 768p turbo LoRA、denoise 0.35 做潜空间放大）。作者称全程未做后期编辑，共渲染 45 个镜头，约 8 个 GPU 小时（5090 显卡），并提到通过 MCP/API 让 Claude 自动规划了 28 个场景、逐镜头写提示词、配音并检查音画同步。该工作流已开源在 GitHub。</p>
 <p>reddit · r/StableDiffusion · /u/Cheap_Credit_3957 · 10月17日 18:12</p>
 <p><strong>「为何当下值得注意」</strong> 该内容展示了一个可复现的多模型协作流程（MiniMax H3 + Suno + Claude + GPT image 2），并包含具体参数和 MCP 自动化思路，对 AI 视频创作者有参考价值。但需注意，这是个人演示而非官方公告，且缺乏第三方验证和对比基准。</p>
 <p><strong>「内容切入角度」</strong> 可做角度：从具体参数和自动化细节切入，拆解一个多模型工作流如何把歌曲、歌词、角色设定和视频渲染串起来，并讨论 MCP/API 在其中的作用。</p>
-<p><strong>标签</strong>: <code>#MiniMax H3</code>, <code>#ComfyUI</code>, <code>#AI视频生成</code>, <code>#多模型工作流</code>, <code>#MCP自动化</code></p></article>
+<p><strong>标签</strong>: <code>#MiniMax H3</code>, <code>#ComfyUI</code>, <code>#AI视频生成</code>, <code>#多模型工作流</code>, <code>#MCP自动化</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button></div></article>
     <div class="pager" id="pager"><button id="pg-prev">← 上一条</button><button id="pg-next">下一条 →</button></div>
   </main>
 </div>
+<button class="totop" id="totop" aria-label="回到顶部">↑</button>
 <script>
 (function(){
   'use strict';
@@ -208,11 +227,51 @@ hr{border:none;border-top:1px solid var(--hz-border);margin:22px 0}
       if(scroll)window.scrollTo({top:0});
     }
   }
+  var sidebar=document.getElementById('sidebar');
+  var tocBtn=document.getElementById('m-toc');
+  function closeDrawer(){ if(sidebar)sidebar.classList.remove('open'); if(tocBtn)tocBtn.setAttribute('aria-expanded','false'); }
+  if(tocBtn)tocBtn.addEventListener('click',function(){
+    var open=sidebar&&sidebar.classList.toggle('open');
+    tocBtn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape')closeDrawer(); });
   navs.forEach(function(n,j){n.addEventListener('click',function(){
     if(isMobile()){
+      closeDrawer();
       var a=items[j]; if(a)a.scrollIntoView({behavior:'smooth',block:'start'});
     } else { show(j,true); }
   });});
+  var mTop=document.getElementById('m-top');
+  if(mTop)mTop.addEventListener('click',function(){closeDrawer();window.scrollTo({top:0,behavior:'smooth'});});
+  var totop=document.getElementById('totop');
+  if(totop){
+    window.addEventListener('scroll',function(){
+      totop.classList.toggle('show',window.scrollY>600);
+    },{passive:true});
+    totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  }
+  document.querySelectorAll('.m-foot button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var act=b.getAttribute('data-act');
+      if(act==='toc'){ if(sidebar)sidebar.classList.add('open'); if(tocBtn)tocBtn.setAttribute('aria-expanded','true'); }
+      if(act==='next'){ var nx=items[parseInt(b.getAttribute('data-i'),10)+1];
+        if(nx)nx.scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+  });
+  var mCur=document.getElementById('m-cur');
+  if('IntersectionObserver' in window && mCur){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          var j=parseInt(en.target.getAttribute('data-i'),10);
+          var t=navs[j]?navs[j].querySelector('.t').textContent:'';
+          mCur.textContent=(j+1)+'/'+items.length+' · '+t;
+          navs.forEach(function(n,k){n.classList.toggle('active',k===j);});
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    items.forEach(function(a){io.observe(a);});
+  }
   if(prev)prev.addEventListener('click',function(){show(cur-1,true);});
   if(next)next.addEventListener('click',function(){show(cur+1,true);});
   document.addEventListener('keydown',function(e){
