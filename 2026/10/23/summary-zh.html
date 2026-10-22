@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Horizon 每日速递 - 2026-10-23</title>
+<style>
+:root{
+  --hz-bg:#faf8f5; --hz-surface:#f3f0eb; --hz-border:#e0dbd3; --hz-text:#2d2a3e;
+  --hz-text-muted:#7c7891; --hz-link:#6d4aaa; --hz-code-bg:#f0ede7; --hz-accent:#e0652e;
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --hz-bg:#1a1726; --hz-surface:#231f33; --hz-border:#342f4a; --hz-text:#e8e4f0;
+    --hz-text-muted:#8c86a0; --hz-link:#f0a848; --hz-code-bg:#211d30; --hz-accent:#e87040; }
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--hz-bg);color:var(--hz-text);
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.75}
+a{color:var(--hz-link);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{background:linear-gradient(120deg,#312e81,#be185d,#f97316);color:#fff;padding:18px 26px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.topbar h1{margin:0;font-size:24px;font-weight:800;line-height:1.35}
+.topbar .sub{opacity:.92;font-size:14px;margin-top:4px}
+.arch-link{color:#fff;border:1px solid rgba(255,255,255,.65);padding:6px 14px;border-radius:999px;font-size:14px;white-space:nowrap;margin-top:4px}
+.arch-link:hover{background:rgba(255,255,255,.15);text-decoration:none}
+.arch-side{display:block;margin:22px 6px 0;padding:9px;border:1px solid var(--hz-border);border-radius:8px;text-align:center;font-size:14px;background:var(--hz-surface);color:var(--hz-text)}
+.layout{display:grid;grid-template-columns:340px 1fr;max-width:1440px;margin:0 auto;align-items:start}
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;padding:18px 14px 30px;border-right:1px solid var(--hz-border)}
+.sidebar .intro{font-size:14px;color:var(--hz-text-muted);margin:2px 6px 14px}
+.sidebar .intro p{margin:0}
+.sec-name{display:flex;justify-content:space-between;align-items:center;width:calc(100% - 12px);
+  font-size:14px;font-weight:800;margin:18px 6px 6px;color:var(--hz-text);background:none;border:none;
+  cursor:pointer;font-family:inherit;text-align:left;padding:2px 0}
+.sec-name .chev{color:var(--hz-text-muted);font-size:12px}
+.sec-items.collapsed{display:none}
+.nav-item{display:flex;gap:8px;align-items:flex-start;width:100%;text-align:left;background:none;border:none;
+  border-left:3px solid transparent;border-radius:6px;padding:7px 9px;cursor:pointer;color:var(--hz-text);
+  font-size:14px;line-height:1.5;font-family:inherit}
+.nav-item:hover{background:var(--hz-surface)}
+.nav-item.active{background:var(--hz-surface);border-left-color:var(--hz-accent);font-weight:700}
+.nav-item .t{flex:1}
+.score-badge{display:inline-block;padding:0 .45em;border-radius:3px;font-family:monospace;font-size:12px;
+  font-weight:700;color:#fff;vertical-align:middle;white-space:nowrap;margin-top:2px}
+.score-badge[data-tier="high"]{background:#be185d}
+.score-badge[data-tier="good"]{background:#e0652e}
+.score-badge[data-tier="mid"]{background:#d4a017}
+.score-badge[data-tier="low"]{background:#7c7891}
+.reader{padding:26px 40px 70px;min-width:0}
+.reader article{display:none;max-width:820px}
+.reader article.active{display:block}
+.reader h3{font-size:21px;line-height:1.45;margin:0 0 10px;font-weight:800}
+.reader h3 a{color:var(--hz-text)}
+.reader h3 a:hover{color:var(--hz-link)}
+.reader p{margin:10px 0}
+.tag-line code{border-radius:3px;padding:.1em .5em;font-size:13px;background:var(--hz-accent);color:#fff}
+.source-line{font-size:14px;color:var(--hz-text-muted);border-left:2px solid var(--hz-accent);padding-left:.6em}
+code{background:var(--hz-code-bg);color:var(--hz-text);padding:.08em .35em;border-radius:4px;font-size:.92em}
+hr{border:none;border-top:1px solid var(--hz-border);margin:22px 0}
+.pager{display:none;gap:10px;margin-top:34px;max-width:820px}
+.pager.show{display:flex}
+.pager button{flex:1;padding:10px;border:1px solid var(--hz-border);background:var(--hz-surface);color:var(--hz-text);
+  border-radius:8px;cursor:pointer;font-size:14px;font-family:inherit}
+.pager button:hover{border-color:var(--hz-accent)}
+.pager button:disabled{opacity:.4;cursor:default}
+.m-sec{display:none}
+.mbar{display:none}
+.drawer-head{display:none}
+.totop{position:fixed;right:16px;bottom:20px;z-index:60;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--hz-border);background:var(--hz-surface);color:var(--hz-text);font-size:19px;
+  cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.totop.show{opacity:1;pointer-events:auto}
+.m-foot{display:none}
+@media (max-width:1023px){
+  html,body{height:auto}
+  .layout{display:block}
+  .mbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:55;
+    background:var(--hz-bg);border-bottom:1px solid var(--hz-border);padding:8px 12px}
+  .mbar button{border:1px solid var(--hz-border);background:var(--hz-surface);color:var(--hz-text);
+    border-radius:8px;padding:6px 14px;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap}
+  .mbar #m-cur{flex:1;font-size:13px;color:var(--hz-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sidebar{display:none}
+  .sidebar.open{display:block;position:fixed;top:0;left:0;right:0;bottom:0;z-index:80;height:100dvh;max-height:none;
+    overflow-y:auto;background:var(--hz-bg);border-right:none;padding-top:0;padding-bottom:20px}
+  .sidebar.open .drawer-head{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;
+    background:var(--hz-bg);padding:12px 6px 10px;border-bottom:1px solid var(--hz-border);font-weight:800;font-size:16px;z-index:1}
+  .drawer-head button{border:1px solid var(--hz-border);background:var(--hz-surface);color:var(--hz-text);
+    border-radius:8px;padding:5px 13px;font-size:15px;font-family:inherit;cursor:pointer}
+  .reader{padding:18px 18px 60px}
+  .reader article{display:block;max-width:none;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid var(--hz-border);scroll-margin-top:64px}
+  .pager{display:none!important}
+  .m-sec{display:flex;justify-content:space-between;align-items:center;width:100%;font-size:19px;font-weight:800;
+    margin:26px 0 4px;background:none;border:none;color:var(--hz-text);cursor:pointer;font-family:inherit;
+    text-align:left;padding:4px 0}
+  .m-sec .chev{color:var(--hz-text-muted);font-size:14px}
+  .reader article.sec-hidden{display:none}
+  .m-foot{display:flex;gap:10px;margin-top:16px}
+  .m-foot button{flex:1;padding:9px;border:1px solid var(--hz-border);background:var(--hz-surface);
+    color:var(--hz-text);border-radius:8px;cursor:pointer;font-size:14px;font-family:inherit}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div><h1>Horizon 每日速递 - 2026-10-23</h1><div class="sub">点分类名可收起/展开 ｜ 左栏点标题读全文 ｜ 移动端顶部「目录」随处切换</div></div><a class="arch-link" href="../../../archive.html">往期日报 →</a></header>
+<div class="mbar"><button id="m-toc" aria-expanded="false">☰ 目录</button><span id="m-cur"></span><button id="m-top">↑ 顶部</button></div>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><div class="drawer-head"><span>目录</span><button id="d-close" aria-label="关闭目录">✕ 关闭</button></div><div class="intro"><blockquote>
+<p>从 937 条内容中筛选出 50 条重要资讯。</p>
+</blockquote></div><div class="sec-group"><button class="sec-name" data-sec="0"><span>科技新闻 · 15 条</span><span class="chev">▾</span></button><div class="sec-items"><button class="nav-item" data-i="0"><span class="t">GitLab 修复影响 12 年发布版本的最高严重级 RCE 漏洞</span><span class="score-badge" data-tier="high">9.0</span></button><button class="nav-item" data-i="1"><span class="t">LiteLLM 发布流水线遭攻击并分发信息窃取恶意软件</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="2"><span class="t">Arista 警告 VeloCloud Orchestrator 存在被利用的 SQL 注入零日漏洞</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="3"><span class="t">eMudhra 因 8 个中间 CA 私钥可被推测而退出全球 SSL/TLS 业务</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="4"><span class="t">Linux 内核 KSMBD 披露两个 CVSS 9.0 远程代码执行漏洞</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="5"><span class="t">DNS 解析服务商 Quad9 宣布退出法国市场</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="6"><span class="t">NVIDIA 发布 AI 智能体安全运行时 OpenShell</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="7"><span class="t">hackios-xnu-kernel 项目实现 iOS 16.5 固件在 Android 设备上运行</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="8"><span class="t">eMudhra 单因子 OTP 登录系统存在暴力破解漏洞</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="9"><span class="t">Anthropic 将 Agent Skills 标准捐赠给 Agentic AI Foundation</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="10"><span class="t">OpenAI 发布 Decisions API</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="11"><span class="t">OlmoEarth v1.3 地理空间嵌入模型发布</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="12"><span class="t">Valkey 实现单进程吞吐量破百万并采用 Rust 统一客户端底座</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="13"><span class="t">中国黑客在入侵 IT 巨头 ConnectWise 后监视数千家公司</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="14"><span class="t">Meta 因 4300 万起隐私违规被判赔 250 亿美元</span><span class="score-badge" data-tier="good">7.0</span></button></div></div><div class="sec-group"><button class="sec-name" data-sec="1"><span>科技博客 · 3 条</span><span class="chev">▾</span></button><div class="sec-items"><button class="nav-item" data-i="15"><span class="t">基于数据驱动的 SageMaker TTS 自动扩缩容策略</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="16"><span class="t">模型部署中 Rank Cache 不匹配导致输出异常的排查</span><span class="score-badge" data-tier="mid">6.0</span></button><button class="nav-item" data-i="17"><span class="t">使用 Amazon SageMaker 训练会话 API 实现自定义训练循环</span><span class="score-badge" data-tier="mid">5.0</span></button></div></div><div class="sec-group"><button class="sec-name" data-sec="2"><span>财经新闻 · 5 条</span><span class="chev">▾</span></button><div class="sec-items"><button class="nav-item" data-i="18"><span class="t">Meta 计划大规模增加 AI 支出导致市值大跌</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="19"><span class="t">美中航线油轮租赁成本创纪录</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="20"><span class="t">西部数据 2027 财年第一财季业绩增长</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="21"><span class="t">英国放宽旨在追究银行家责任的“适当人选”规则</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="22"><span class="t">智利预计今年铜产量下降 8% 至 9%</span><span class="score-badge" data-tier="good">7.0</span></button></div></div><div class="sec-group"><button class="sec-name" data-sec="3"><span>国内重要新闻 · 6 条</span><span class="chev">▾</span></button><div class="sec-items"><button class="nav-item" data-i="23"><span class="t">纪念中国工农红军长征胜利 90 周年大会在北京举行</span><span class="score-badge" data-tier="high">10.0</span></button><button class="nav-item" data-i="24"><span class="t">西藏那曲市巴青县发生 7.0 级地震</span><span class="score-badge" data-tier="high">9.0</span></button><button class="nav-item" data-i="25"><span class="t">商务部将出台加快智能产品在消费领域应用工作方案</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="26"><span class="t">菲律宾批评中国驻菲使馆言论违背外交礼仪</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="27"><span class="t">商务部提出做强“购在中国”品牌以推动消费升级</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="28"><span class="t">中俄共同谴责欧亚地区的“破坏性外部干涉”</span><span class="score-badge" data-tier="good">7.0</span></button></div></div><div class="sec-group"><button class="sec-name" data-sec="4"><span>国际焦点 · 10 条</span><span class="chev">▾</span></button><div class="sec-items"><button class="nav-item" data-i="29"><span class="t">俄罗斯在同意恢复和平谈判后对乌克兰发动导弹袭击</span><span class="score-badge" data-tier="high">9.0</span></button><button class="nav-item" data-i="30"><span class="t">伊朗称七艘船只在霍尔木兹海峡遇袭并警告美国</span><span class="score-badge" data-tier="high">9.0</span></button><button class="nav-item" data-i="31"><span class="t">美国中央司令部称对伊朗海上封锁已持续 100 天</span><span class="score-badge" data-tier="high">9.0</span></button><button class="nav-item" data-i="32"><span class="t">世卫组织警告三个非洲国家出现更复杂的埃博拉疫情</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="33"><span class="t">巴西总统决选进入白热化：极右翼博尔索纳罗与卢拉支持率接近</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="34"><span class="t">胡塞武装袭击沙特达曼机场导致两人死亡</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="35"><span class="t">以色列告知美国哈马斯无意解除武装并正重建力量</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="36"><span class="t">塞尔维亚选举前夕数千名学生举行集会</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="37"><span class="t">阿联酋提名拉娜·努赛贝竞选联合国秘书长引发人权争议</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="38"><span class="t">中国西藏偏远地区发生 7.0 级强震</span><span class="score-badge" data-tier="good">7.0</span></button></div></div><div class="sec-group"><button class="sec-name" data-sec="5"><span>智能电动车 · 11 条</span><span class="chev">▾</span></button><div class="sec-items"><button class="nav-item" data-i="39"><span class="t">特斯拉无监督 FSD 预计 2027 年 Q2 推出且仅限 Robotaxi 区域</span><span class="score-badge" data-tier="high">9.0</span></button><button class="nav-item" data-i="40"><span class="t">特斯拉 Cybercab 公布上市销售日期</span><span class="score-badge" data-tier="high">9.0</span></button><button class="nav-item" data-i="41"><span class="t">特斯拉将构建自有地图系统以优化 FSD 表现</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="42"><span class="t">北汽星钽 5X 开启预售，起售价 13.99 万元</span><span class="score-badge" data-tier="good">8.0</span></button><button class="nav-item" data-i="43"><span class="t">北汽计划将旗下多品牌车型接入宁德时代换电网络</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="44"><span class="t">小鹏 GX 交付量突破 3 万辆且营收超 100 亿元</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="45"><span class="t">比亚迪 Denza N8 豪华纯电 SUV 即将开启预订</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="46"><span class="t">法拉利首款纯电车型 Luce 美国起售价 560,800 美元</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="47"><span class="t">Fortescue 采用 KUKA 工业机器人处理 6MW 大功率充电电缆</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="48"><span class="t">华为公布干昆智驾 ADS 5 各版本配置与功能差异</span><span class="score-badge" data-tier="good">7.0</span></button><button class="nav-item" data-i="49"><span class="t">问界汽车在陕西神木市超速撞击灯柱起火，司机遇难</span><span class="score-badge" data-tier="mid">6.0</span></button></div></div><a class="arch-side" href="../../../archive.html">往期日报 →</a></aside>
+  <main class="reader"><button class="m-sec" data-sec="0"><span>科技新闻 · 15 条</span><span class="chev">▾</span></button><article id="item-tech-news-1" data-i="0" data-sec="0"><h3><a href="https://www.theregister.com/security/2026/10/22/max-severity-gitlab-bug-allows-remote-code-execution-over-12-years-of-releases/5304854">GitLab 修复影响 12 年发布版本的最高严重级 RCE 漏洞</a> ⭐️ 9.0/10</h3><p>GitLab 修复了一个最高严重级别的远程代码执行 (RCE) 漏洞，该漏洞的影响范围涵盖了过去 12 年的发布版本。官方已发布修复版本，并强烈建议所有用户尽快升级以消除安全风险。</p>
+<p>rss · The Register · 10月22日 17:36</p>
+<p><strong>「背景」</strong> 此次漏洞（CVE-2026-110264）存在于 GitLab CI/CD 的正则表达式编译器引擎中，允许未经身份验证的远程攻击者在受影响的实例上执行任意代码 [tool-1-1, tool-1-2]。</p>
+<p><strong>「影响」</strong> 由于该漏洞允许远程攻击者在受影响的服务器上执行任意代码，且覆盖版本极广，使用旧版 GitLab 的组织面临极高的基础设施被接管风险，必须立即执行版本更新。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://thehackernews.com/2026/10/critical-gitlab-flaw-cvss-100-could.html?m=1">Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE ...</a></li>
+<li><a href="https://www.bleepingcomputer.com/news/security/gitlab-warns-of-max-severity-rce-flaw-in-regex-compiler-engine/">GitLab warns of max severity code execution vulnerability</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#GitLab</code>, <code>#网络安全</code>, <code>#远程代码执行</code>, <code>#漏洞修复</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="0">下一条 ↓</button></div></article><article id="item-tech-news-2" data-i="1" data-sec="0"><h3><a href="https://www.bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware/">LiteLLM 发布流水线遭攻击并分发信息窃取恶意软件</a> ⭐️ 8.0/10</h3><p>LiteLLM 的发布流水线遭到黑客攻击，导致其 PyPI 软件包和 Docker 镜像被植入恶意代码。该恶意软件旨在窃取用户的凭据、机密信息（secrets）以及环境变量。目前该攻击已影响到通过这些渠道分发的版本。</p>
+<p>rss · BleepingComputer · 10月22日 19:12</p>
+<p><strong>「背景」</strong> LiteLLM 是一个开源库，为 100 多个大语言模型（如 OpenAI、Anthropic 和 Vertex AI 等）提供统一的 OpenAI 兼容 API 接口，可作为 Python 库或自托管代理服务器部署 [tool-1-1, tool-1-2]。</p>
+<p><strong>「影响」</strong> 使用 LiteLLM 管理 API 密钥和机密信息的软件工程师及 AI 从业者面临凭据泄露风险，需立即检查相关环境并更新至安全版本。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/LiteLLM">LiteLLM - Wikipedia</a></li>
+<li><a href="https://docs.litellm.ai/docs/">Getting Started | liteLLM</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#供应链攻击</code>, <code>#网络安全</code>, <code>#LiteLLM</code>, <code>#PyPI</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="1">下一条 ↓</button></div></article><article id="item-tech-news-3" data-i="2" data-sec="0"><h3><a href="https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html">Arista 警告 VeloCloud Orchestrator 存在被利用的 SQL 注入零日漏洞</a> ⭐️ 8.0/10</h3><p>Arista 于 10 月 22 日发布公告，警告 VeloCloud Orchestrator (VCO) 本地部署版本存在一个正被积极利用的严重 SQL 注入零日漏洞。该漏洞允许任何能够登录管理系统的用户（即使仅拥有只读客户账户）将权限提升至最高级别的操作员（Operator）权限。Arista 已发布安全更新以修复此漏洞。</p>
+<p>rss · The Hacker News · 10月22日 19:05</p>
+<p><strong>「背景知识」</strong> VeloCloud Orchestrator (VCO) 是 Arista VeloCloud SD-WAN 网络的中央管理系统，负责对整个软件定义广域网进行统一配置和监控。</p>
+<p><strong>「影响」</strong> 使用 VeloCloud Orchestrator 本地部署的企业面临极高的权限提升风险，攻击者可通过低权限账户获取对 SD-WAN 网络管理系统的完全控制权，相关用户需尽快安装安全更新。</p>
+<p><strong>标签</strong>: <code>#网络安全</code>, <code>#SQL注入</code>, <code>#零日漏洞</code>, <code>#SD-WAN</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="2">下一条 ↓</button></div></article><article id="item-tech-news-4" data-i="3" data-sec="0"><h3><a href="https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html">eMudhra 因 8 个中间 CA 私钥可被推测而退出全球 SSL/TLS 业务</a> ⭐️ 8.0/10</h3><p>印度证书颁发机构 eMudhra 董事会于周四决定退出全球 SSL/TLS 证书业务。此前一名研究人员报告称，该机构 8 个中间 CA 证书的私钥可被轻易推测并已成功恢复。eMudhra 表示将通过合作伙伴为受影响的客户提供免费的替代证书。</p>
+<p>rss · The Hacker News · 10月22日 18:12</p>
+<p><strong>「背景」</strong> SSL/TLS 证书体系依赖于公钥基础设施（PKI），其中中间证书颁发机构（Intermediate CA）负责代表根 CA 为终端用户签发证书。若中间 CA 的私钥被泄露或可被推测，攻击者即可伪造受信任的证书，从而实施中间人攻击或拦截加密流量。</p>
+<p><strong>「影响」</strong> 使用 eMudhra 受影响证书的客户需要尽快更换证书，以防止因私钥泄露导致的中间人攻击或伪造证书风险。</p>
+<p><strong>标签</strong>: <code>#网络安全</code>, <code>#SSL/TLS</code>, <code>#证书颁发机构</code>, <code>#PKI</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="3">下一条 ↓</button></div></article><article id="item-tech-news-5" data-i="4" data-sec="0"><h3><a href="https://thehackernews.com/2026/10/two-cvss-90-linux-ksmbd-rce-flaws.html">Linux 内核 KSMBD 披露两个 CVSS 9.0 远程代码执行漏洞</a> ⭐️ 8.0/10</h3><p>Linux 内核内置的 SMB 服务器 KSMBD 被披露存在两个 CVSS 评分为 9.0 的远程代码执行（RCE）漏洞，目前主线内核尚未发布修复补丁。其中 ZDI-CAN-33774 漏洞可在网络身份验证之前被触发，而 ZDI-CAN-33549 则需要 SMB Direct 传输和支持 RDMA 的网络环境。</p>
+<p>rss · The Hacker News · 10月22日 17:01</p>
+<p><strong>「背景知识」</strong> KSMBD 是 Linux 内核内置的 SMB 服务器，旨在提供高性能的文件共享服务。它直接在内核空间运行，以减少用户空间与内核空间之间的数据拷贝开销，从而提升网络文件传输效率。</p>
+<p><strong>「影响」</strong> 运行 KSMBD 的 Linux 服务器面临高风险，尤其是 ZDI-CAN-33774 允许未经身份验证的远程攻击者执行代码，系统管理员在官方补丁发布前需谨慎评估 KSMBD 的启用状态。</p>
+<p><strong>标签</strong>: <code>#Linux Kernel</code>, <code>#网络安全</code>, <code>#RCE</code>, <code>#KSMBD</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="4">下一条 ↓</button></div></article><article id="item-tech-news-6" data-i="5" data-sec="0"><h3><a href="https://quad9.net/news/blog/au-revoir-france/">DNS 解析服务商 Quad9 宣布退出法国市场</a> ⭐️ 7.0/10</h3><p>DNS 解析服务商 Quad9 宣布将退出法国市场，计划在 11 月 24 日后通过 GeoIP 过滤器屏蔽法国用户访问其服务。此次决定源于 Quad9 无法满足法国法院关于屏蔽版权内容的严格要求，且在尝试实施 GeoIP 屏蔽后，原告（Sony Music Entertainment GmbH）通过 VPN 绕过限制，导致法院认定其未合规并对其处以蔑视法庭的巨额罚款。</p>
+<p>hackernews · Lobsters · 10月22日 14:32 · <a href="https://news.ycombinator.com/item?id=50195959">社区讨论</a></p>
+<p><strong>「背景」</strong> Quad9 是一家总部位于瑞士的非营利性、注重隐私的 DNS 解析服务商。此前，法国法院要求其屏蔽部分侵权域名，但 Quad9 认为在不违反用户隐私或将法国法律全球化的前提下，技术上无法实现精准的区域性屏蔽，因此面临法院的罚款压力 [tool-1-2, tool-1-3]。</p>
+<p><strong>「影响」</strong> 法国用户将无法继续使用 Quad9 的 DNS 解析服务，且该案例凸显了 DNS 基础设施在面对国家级版权屏蔽指令时，仅依赖 GeoIP 过滤难以在法律层面达成合规。</p>
+<p><strong>「社区讨论」</strong> 讨论者对原告使用 VPN 绕过屏蔽后仍对服务商处以罚款的行为表示不满，认为这不合理；部分用户将其与 Cisco 此前退出法国市场的类似举措相类比。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://reclaimthenet.org/quad9-considers-leaving-france-over-website-blocking-order">Quad9 Considers Leaving France Over Website Blocking Order</a></li>
+<li><a href="https://zeli.app/story/50195959">Quad9 Quits France After Court Orders · Hacker News | Zeli</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#DNS</code>, <code>#网络监管</code>, <code>#GeoIP</code>, <code>#版权法</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="5">下一条 ↓</button></div></article><article id="item-tech-news-7" data-i="6" data-sec="0"><h3><a href="https://github.com/NVIDIA/OpenShell">NVIDIA 发布 AI 智能体安全运行时 OpenShell</a> ⭐️ 7.0/10</h3><p>NVIDIA 推出了 OpenShell，这是一个为自主 AI 智能体集群设计的安全且私密的运行时环境。该工具旨在为智能体提供执行代码、管理文件、安装软件包和调用 API 的能力，同时通过沙箱机制防止其无限制地访问宿主系统的敏感数据、密钥或网络。</p>
+<p>hackernews · niemandhier · 10月22日 17:44 · <a href="https://news.ycombinator.com/item?id=50198675">社区讨论</a></p>
+<p><strong>「背景」</strong> 自主 AI 智能体在执行任务时通常需要读写文件、安装软件包或调用 API，但直接在宿主机运行这些操作会带来严重的安全风险。为了在赋予智能体执行能力的同时防止数据外泄或未经授权的网络活动，需要一种能够提供容器化沙箱隔离且可治理的运行时环境。</p>
+<p><strong>「影响」</strong> 开发者可以通过 OpenShell 在赋予 AI 智能体执行权限与维持系统安全性之间取得平衡，降低自主智能体在执行复杂任务时对宿主环境造成破坏或泄露隐私的风险。</p>
+<p><strong>「社区讨论」</strong> 部分用户认为容器化技术已能解决沙箱问题，但 OpenShell 在管理智能体容器集群方面具有价值；另有用户质疑在保证绝对安全的同时维持高执行能力是否存在矛盾。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://landscape.jimmysong.io/projects/openshell/">OpenShell | AI Native Landscape</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#AI Agents</code>, <code>#沙箱</code>, <code>#NVIDIA</code>, <code>#软件工程</code>, <code>#运行时</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="6">下一条 ↓</button></div></article><article id="item-tech-news-8" data-i="7" data-sec="0"><h3><a href="https://github.com/oosexgang/hackios-xnu-kernel">hackios-xnu-kernel 项目实现 iOS 16.5 固件在 Android 设备上运行</a> ⭐️ 7.0/10</h3><p>开源项目 hackios-xnu-kernel 实现了在 Android 设备（如 POCO X5 Pro 5G 及部分小米设备）和 QEMU 模拟器上运行完整的 iOS 16.5 固件。该项目旨在为内核研究提供实验环境，而非提供可日常使用的 ROM 替代方案。</p>
+<p>hackernews · aghuang · 10月22日 15:26 · <a href="https://news.ycombinator.com/item?id=50196718">社区讨论</a></p>
+<p><strong>「背景」</strong> XNU 是 iOS 和 macOS 的核心内核。由于 iOS 是闭源且高度绑定 Apple 硬件的专有操作系统，在非原生硬件上运行其内核需要复杂的逆向工程和虚拟化技术。</p>
+<p><strong>「影响」</strong> 该项目为安全研究人员和操作系统爱好者提供了一个在 ARM 架构 Android 硬件上分析 iOS 内核的新基准测试环境。</p>
+<p><strong>「社区讨论」</strong> 用户 SoKamil 指出该项目目前仅为研究基准，运行会话在持续数秒后即返回加载器并输出日志。部分用户对在 Android 上运行 iOS 的实际需求表示质疑，认为在 Apple 硬件上运行开源 Android 发行版更具价值。</p>
+<p><strong>标签</strong>: <code>#iOS</code>, <code>#Android</code>, <code>#XNU Kernel</code>, <code>#虚拟化</code>, <code>#逆向工程</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="7">下一条 ↓</button></div></article><article id="item-tech-news-9" data-i="8" data-sec="0"><h3><a href="https://mastodon.catgirl.cloud/@49016/117475976434068995">eMudhra 单因子 OTP 登录系统存在暴力破解漏洞</a> ⭐️ 7.0/10</h3><p>研究人员发现 eMudhra 的单因子 OTP（一次性密码）登录系统存在严重漏洞，攻击者可通过暴力破解绕过身份验证。该漏洞的核心在于 OTP 校验端点缺乏速率限制（Rate-limiting）、缺乏失效机制且搜索空间有限，导致攻击者能够通过穷举法猜中验证码。</p>
+<p>hackernews · tensegrist · 10月22日 19:14 · <a href="https://news.ycombinator.com/item?id=50199757">社区讨论</a></p>
+<p><strong>「背景」</strong> eMudhra 是一家全球数字信任公司，提供 SSL/TLS 证书等服务。近期该公司陷入严重安全危机，因 8 个中间 CA 证书的私钥被泄露或强度过低，导致 Chrome 和 Firefox 等浏览器撤销对其根证书的信任，并促使 eMudhra 宣布退出全球 SSL/TLS 证书业务 [tool-1-1, tool-2-1, tool-2-3]。</p>
+<p><strong>「影响」</strong> 任何已知用户电子邮件地址的攻击者，均可能通过暴力破解 OTP 码非法访问该 CA 服务的用户账户。</p>
+<p><strong>「社区讨论」</strong> 评论者 ignatella 指出，虽然该系统使用 JS 公钥加密请求体以防止代理拦截，但由于未对 OTP 校验端点实施速率限制，导致加密保护失效。部分用户对此漏洞表示担忧，认为只要知道邮箱地址即可危及账户安全。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://cybersecuritynews.com/emudhra-security-compromise/">eMudhra Certificate Authority Compromise Triggers Emergency ...</a></li>
+<li><a href="https://tech-insider.org/emudhra-exits-global-tls-certificate-business-2026/">eMudhra Exits TLS Business After 8 Weak CA Keys [2026]</a></li>
+<li><a href="https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html">eMudhra to Exit Global SSL/TLS Business After 8 Intermediate ...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#网络安全</code>, <code>#身份验证</code>, <code>#OTP</code>, <code>#漏洞分析</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="8">下一条 ↓</button></div></article><article id="item-tech-news-10" data-i="9" data-sec="0"><h3><a href="https://simonwillison.net/2026/Oct/22/donating-agent-skills/">Anthropic 将 Agent Skills 标准捐赠给 Agentic AI Foundation</a> ⭐️ 7.0/10</h3><p>Anthropic 已将其 Agent Skills 标准捐赠给由 Linux 基金会托管的 Agentic AI Foundation (AAIF)。该基金会由 Anthropic、Block 和 OpenAI 共同创立，旨在使 AI 代理的能力标准保持开放、由社区驱动且具备供应商中立性。此前，Anthropic 已经向该基金会捐赠了模型上下文协议 (MCP)。</p>
+<p>rss · Simon Willison · 10月22日 18:09</p>
+<p><strong>「背景」</strong> Agentic AI Foundation (AAIF) 是由 Anthropic、OpenAI 和 Block 共同创立并由 Linux 基金会托管的组织，旨在建立 AI 代理的供应商中立标准。此前，Anthropic 已将模型上下文协议 (Model Context Protocol, MCP) 捐赠给该基金会。</p>
+<p><strong>「影响」</strong> 此举有助于推动 AI 代理能力的互操作性，使开发者能够基于供应商中立的标准构建代理技能，而无需绑定于单一的 AI 平台。</p>
+<p><strong>标签</strong>: <code>#AI Agent</code>, <code>#开源标准</code>, <code>#Anthropic</code>, <code>#Agentic AI Foundation</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="9">下一条 ↓</button></div></article><article id="item-tech-news-11" data-i="10" data-sec="0"><h3><a href="https://openai.com/index/decisions-api">OpenAI 发布 Decisions API</a> ⭐️ 7.0/10</h3><p>OpenAI 推出了 Decisions API，旨在为应用程序提供快速、专注且低成本的决策能力。该 API 旨在将决策功能从通用聊天补全中分离，以提高响应速度并降低开发成本。</p>
+<p>rss · OpenAI Blog · 10月22日 19:00</p>
+<p><strong>「背景」</strong> Decisions API 旨在处理具有限定答案的问题，通过评估文本和图像来返回类型化的答案，例如条件的成立概率、预定义选项中的选择或基于量表的分数 [tool-1-1, tool-1-3]。</p>
+<p><strong>「影响」</strong> 构建智能体工作流（agentic workflows）的开发者可以通过使用该专用 API，在无需调用全量通用模型的情况下，实现更低延迟且更经济的结构化决策逻辑。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://developers.openai.com/api/docs/guides/decisions">Decisions | OpenAI API</a></li>
+<li><a href="https://vercel.com/i/what-is-openai-decisions-api">What is OpenAI&#x27;s Decisions API? - Vercel</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#OpenAI</code>, <code>#API</code>, <code>#软件工程</code>, <code>#人工智能</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="10">下一条 ↓</button></div></article><article id="item-tech-news-12" data-i="11" data-sec="0"><h3><a href="https://huggingface.co/blog/allenai/olmoearth-v1-3">OlmoEarth v1.3 地理空间嵌入模型发布</a> ⭐️ 7.0/10</h3><p>Hugging Face 发布了 OlmoEarth v1.3，这是一个专门针对全球地理空间数据优化的嵌入模型。该模型旨在为行星规模的地理分析提供高性能的向量表示能力，适用于卫星图像和地理空间信息的处理。</p>
+<p>rss · Hugging Face Blog · 10月22日 16:11</p>
+<p><strong>「背景」</strong> OlmoEarth 是由 AI2 (Allen Institute for AI) 开发的地理空间基础模型系列，旨在通过处理卫星图像等遥感数据来支持行星规模的分析。该项目此前已推出 OlmoEarth v1-Large 版本及 OlmoEarth Studio，支持将自定义嵌入导出用于下游分析 [tool-1-1, tool-1-2]。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://huggingface.co/allenai">allenai (Ai2)</a></li>
+<li><a href="https://allenai.org/olmoearth">OlmoEarth | Ai2</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#地理空间 AI</code>, <code>#嵌入模型</code>, <code>#机器学习</code>, <code>#开源模型</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="11">下一条 ↓</button></div></article><article id="item-tech-news-13" data-i="12" data-sec="0"><h3><a href="https://www.infoq.cn/article/ud4r6jvkmuKNAu9NTHxF?utm_source=rss&amp;utm_medium=article">Valkey 实现单进程吞吐量破百万并采用 Rust 统一客户端底座</a> ⭐️ 7.0/10</h3><p>Redis 的开源替代方案 Valkey 在架构演进中实现了单进程吞吐量突破 100 万次请求。同时，该项目引入了基于 Rust 语言的统一客户端底座，旨在通过内存安全和高性能特性优化客户端实现。</p>
+<p>rss · InfoQ 中文站 · 10月22日 15:00</p>
+<p><strong>「背景」</strong> Valkey 是在 Redis 更改其开源许可证后，由社区发起的 Redis 开源分支项目，旨在提供一个完全开源且兼容的内存数据存储替代方案。</p>
+<p><strong>「影响」</strong> 单进程性能的提升和 Rust 底座的引入，为需要极高吞吐量且关注内存安全性的开发者提供了比传统 Redis 客户端更高效的替代方案。</p>
+<p><strong>标签</strong>: <code>#Valkey</code>, <code>#Redis</code>, <code>#Rust</code>, <code>#开源软件</code>, <code>#高性能计算</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="12">下一条 ↓</button></div></article><article id="item-tech-news-14" data-i="13" data-sec="0"><h3><a href="https://techcrunch.com/2026/10/22/chinese-hackers-spied-on-thousands-of-companies-after-breaching-it-giant-connectwise/">中国黑客在入侵 IT 巨头 ConnectWise 后监视数千家公司</a> ⭐️ 7.0/10</h3><p>微软指责一名与中国相关的黑客利用 AI 代理快速入侵 IT 巨头 ConnectWise 及其数千家客户公司。</p>
+<p>rss · TechCrunch · 10月22日 16:47</p>
+<p><strong>标签</strong>: <code>#网络安全</code>, <code>#AI Agent</code>, <code>#供应链攻击</code>, <code>#ConnectWise</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="13">下一条 ↓</button></div></article><article id="item-tech-news-15" data-i="14" data-sec="0"><h3><a href="https://thehackernews.com/2026/10/meta-ordered-to-pay-25-billion-after.html">Meta 因 4300 万起隐私违规被判赔 250 亿美元</a> ⭐️ 7.0/10</h3><p>新墨西哥州地方法院周三裁定 Meta 需支付 250 亿美元的罚金。该判决源于一起关于 4300 万起隐私违规行为的诉讼，而该案件的起因是 2018 年曝光的剑桥分析（Cambridge Analytica）数据丑闻。</p>
+<p>rss · The Hacker News · 10月22日 16:12</p>
+<p><strong>「背景」</strong> 剑桥分析（Cambridge Analytica）丑闻于 2018 年曝光，涉及 Meta（原 Facebook）允许第三方应用在用户不知情的情况下大规模收集个人数据，用于精准政治广告投放。</p>
+<p><strong>「影响」</strong> Meta 将面临巨额的财务处罚，此裁决进一步强化了针对大规模数据隐私违规行为的法律问责力度。</p>
+<p><strong>标签</strong>: <code>#Meta</code>, <code>#数据隐私</code>, <code>#法律诉讼</code>, <code>#Cambridge Analytica</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="14">下一条 ↓</button></div></article><button class="m-sec" data-sec="1"><span>科技博客 · 3 条</span><span class="chev">▾</span></button><article id="item-tech-blog-1" data-i="15" data-sec="1"><h3><a href="https://aws.amazon.com/blogs/machine-learning/stop-guessing-auto-scaling-targets-for-tts-on-amazon-sagemaker-ai/">基于数据驱动的 SageMaker TTS 自动扩缩容策略</a> ⭐️ 6.0/10</h3><p>rss · AWS Machine Learning Blog · 10月22日 16:30</p>
+<p><strong>「背景」</strong> 在 Amazon SageMaker AI 上部署自定义文本转语音 (TTS) 模型时，团队通常依赖经验猜测来设定自动扩缩容阈值，这往往导致 GPU 资源浪费或违反延迟服务等级目标 (SLO)。</p>
+<p><strong>「方案」</strong> 作者通过部署 Kokoro-82M 模型并使用自定义容器，提出了一套基于实测数据的扩缩容策略。该方法不再依赖猜测，而是通过测量实时端点的两个关键指标——最大并发请求数 ($Q_{max}$) 和总处理时间 ($T_{total}$)，来推导并制定精确的自动扩缩容策略。</p>
+<p><strong>「启示」</strong> 通过量化并发能力与处理时间，可以将模型部署的扩缩容配置从经验主义转向数据驱动，从而在成本控制与性能保障之间取得平衡。</p>
+<p><strong>标签</strong>: <code>#Amazon SageMaker</code>, <code>#自动扩缩容</code>, <code>#TTS</code>, <code>#模型部署</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="15">下一条 ↓</button></div></article><article id="item-tech-blog-2" data-i="16" data-sec="1"><h3><a href="https://rss.qiaomu.ai/articles/%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E9%A1%BA%E5%88%A9-%E9%9A%8F%E5%90%8E%E5%8D%B4%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD--22918d5f5f61/rewrite">模型部署中 Rank Cache 不匹配导致输出异常的排查</a> ⭐️ 6.0/10</h3><p>rss · 向阳乔木 QMReader · 10月22日 19:25</p>
+<p><strong>「背景」</strong> 作者在部署一个权重文件约为 196.3 GiB 的模型时，尽管权重校验和正确且服务器启动正常，但模型在处理简单提示词时会出现严重的重复 token 现象（如连续重复 32 次同一个 token）。</p>
+<p><strong>「方案」</strong> 经过排查，作者发现问题并非出在权重文件，而是由于 Rank Cache 与当前的权重 Checkpoint 不匹配。通过抽样 3536 条记录，作者证实有 140,180 处 key 的顺序不一致，这表明该缓存是由另一个不同版本的 Checkpoint 生成的，导致模型输出胡言乱语。</p>
+<p><strong>「启示」</strong> 在模型部署中，确保 Rank Cache 与权重 Checkpoint 的严格一致性至关重要，否则即使权重文件本身正确，也会因缓存索引失效而导致模型推理崩溃。</p>
+<p><strong>标签</strong>: <code>#模型部署</code>, <code>#Rank Cache</code>, <code>#故障排查</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="16">下一条 ↓</button></div></article><article id="item-tech-blog-3" data-i="17" data-sec="1"><h3><a href="https://aws.amazon.com/blogs/machine-learning/write-your-own-training-loop-without-managing-gpus-with-amazon-sagemaker-training-sessions/">使用 Amazon SageMaker 训练会话 API 实现自定义训练循环</a> ⭐️ 5.0/10</h3><p>rss · AWS Machine Learning Blog · 10月22日 18:00</p>
+<p><strong>「背景」</strong> 在进行大语言模型（LLM）的监督微调（SFT）或强化学习（RL）时，开发者通常需要在编写自定义训练循环的灵活性与管理 GPU 集群的复杂性之间做出权衡。</p>
+<p><strong>「方案」</strong> 作者介绍了 Amazon SageMaker 训练会话 API，该方案允许开发者在 Python 脚本中完全控制训练循环（如自定义目标函数），而将底层的 GPU 资源管理交给服务端。通过三个 SDK 客户端，开发者可以实现复杂的训练逻辑，作者具体演示了在 GSM8K 数据集上运行 GRPO 循环，以及在竞争性编程任务中部署强化学习工作负载的实现过程。</p>
+<p><strong>「启示」</strong> 该 API 实现了训练逻辑与基础设施管理的解耦，使开发者能够在无需处理 GPU 运维的情况下，灵活地实现 SFT 和 RL 等自定义 LLM 训练流程。</p>
+<p><strong>标签</strong>: <code>#Amazon SageMaker</code>, <code>#LLM 训练</code>, <code>#GPU 管理</code>, <code>#强化学习</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="17">下一条 ↓</button></div></article><button class="m-sec" data-sec="2"><span>财经新闻 · 5 条</span><span class="chev">▾</span></button><article id="item-finance-news-1" data-i="18" data-sec="2"><h3><a href="https://www.ft.com/content/6e318b81-a771-4842-9754-e265fef2852f?syn-25a6b1a6=1">Meta 计划大规模增加 AI 支出导致市值大跌</a> ⭐️ 8.0/10</h3><p>Meta 宣布未来将在租赁和合同（主要为 AI 算力与基础设施）上支出约 8,250 亿美元，导致其市值蒸发 1,240 亿美元，且公司将全年资本支出下限上调至 1,350 亿美元。</p>
+<p>rss · FT Markets · 10月22日 20:05</p>
+<p><strong>「背景」</strong> 资本支出是指公司在购买固定资产（如服务器和数据中心）上的投入，投资者目前高度关注 AI 巨额投入能否转化为实际收益。</p>
+<p><strong>「影响」</strong> 该消息引发市场对 AI 投资回报的担忧，导致纳斯达克指数下跌，并推动投资者转向美债避险从而推高债价。</p>
+<p><strong>标签</strong>: <code>#Meta</code>, <code>#人工智能</code>, <code>#纳斯达克</code>, <code>#资本支出</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="18">下一条 ↓</button></div></article><article id="item-finance-news-2" data-i="19" data-sec="2"><h3><a href="https://www.bloomberg.com/news/articles/2026-10-22/oil-tankers-plying-the-us-china-route-command-60-million-it-s-crushing-demand">美中航线油轮租赁成本创纪录</a> ⭐️ 8.0/10</h3><p>受伊朗战争导致全球航运中断影响，太平洋航线油轮租赁成本飙升至近 8000 万美元的纪录高位，导致美国对亚洲的原油出口预计将降至多年低点。</p>
+<p>rss · Bloomberg Markets · 10月22日 19:46</p>
+<p><strong>「背景」</strong> 地缘政治冲突引发的航运中断增加了原油运输的成本和风险。</p>
+<p><strong>「影响」</strong> 高昂的运输成本成为经济壁垒，直接抑制了美国原油向亚洲市场的出口量。</p>
+<p><strong>标签</strong>: <code>#原油</code>, <code>#航运成本</code>, <code>#美中贸易</code>, <code>#地缘政治</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="19">下一条 ↓</button></div></article><article id="item-finance-news-3" data-i="20" data-sec="2"><h3><a href="https://www.ithome.com/1/016/759.htm">西部数据 2027 财年第一财季业绩增长</a> ⭐️ 7.0/10</h3><p>西部数据 2027 财年第一财季（2026 年 7 月 4 日至 10 月 2 日）营业收入 43.81 亿美元，同比增长 55%，归母净利润 17.79 亿美元，同比增长 54%，并宣布将季度现金股息提高 17% 至每股 0.18 美元。</p>
+<p>rss · IT之家 · 10月22日 20:19</p>
+<p><strong>「背景」</strong> 西部数据是全球存储基础设施提供商，主要为云服务商和企业客户提供硬盘（HDD）等存储解决方案。</p>
+<p><strong>「影响」</strong> AI 驱动的数据经济增加了对存储需求的增长，带动公司营收与毛利率提升。</p>
+<p><strong>标签</strong>: <code>#西部数据</code>, <code>#财报</code>, <code>#存储行业</code>, <code>#AI驱动</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="20">下一条 ↓</button></div></article><article id="item-finance-news-4" data-i="21" data-sec="2"><h3><a href="https://www.ft.com/content/0a5c7582-133c-4e24-8e3d-daa30f5dad56?syn-25a6b1a6=1">英国放宽旨在追究银行家责任的“适当人选”规则</a> ⭐️ 7.0/10</h3><p>英国放宽了旨在追究银行家责任的“适当人选”（fit and proper）监管规则。</p>
+<p>rss · FT Markets · 10月22日 20:00</p>
+<p><strong>标签</strong>: <code>#金融监管</code>, <code>#英国经济</code>, <code>#银行合规</code>, <code>#金融问责</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="21">下一条 ↓</button></div></article><article id="item-finance-news-5" data-i="22" data-sec="2"><h3><a href="https://www.bloomberg.com/news/articles/2026-10-22/chile-copper-slump-deepens-as-storms-accidents-hit-aging-mines">智利预计今年铜产量下降 8% 至 9%</a> ⭐️ 7.0/10</h3><p>智利财政部长豪尔赫·基罗斯表示，受致命事故和极端天气影响，智利今年的铜产量预计将下降 8% 至 9%。</p>
+<p>rss · Bloomberg Markets · 10月22日 19:46</p>
+<p><strong>「背景」</strong> 智利是全球最大的铜生产国。</p>
+<p><strong>「影响」</strong> 全球最大铜产地的减产将直接影响全球铜供应量及市场价格。</p>
+<p><strong>标签</strong>: <code>#铜</code>, <code>#智利</code>, <code>#大宗商品</code>, <code>#矿业</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="22">下一条 ↓</button></div></article><button class="m-sec" data-sec="3"><span>国内重要新闻 · 6 条</span><span class="chev">▾</span></button><article id="item-china-news-1" data-i="23" data-sec="3"><h3><a href="https://www.chinanews.com.cn/gn/2026/10-22/10719280.shtml">纪念中国工农红军长征胜利 90 周年大会在北京举行</a> ⭐️ 10.0/10</h3><p>10 月 22 日，纪念中国工农红军长征胜利 90 周年大会在北京人民大会堂举行。中共中央总书记、国家主席、中央军委主席习近平在会上发表重要讲话，强调长征的历史意义及其在当代的延伸。</p>
+<p>rss · 中新网 国内 · 10月22日 12:11</p>
+<p><strong>「背景」</strong> 此次大会旨在纪念中国工农红军长征胜利 90 周年这一历史节点。</p>
+<p><strong>标签</strong>: <code>#习近平</code>, <code>#长征胜利90周年</code>, <code>#政治</code>, <code>#纪念大会</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="23">下一条 ↓</button></div></article><article id="item-china-news-2" data-i="24" data-sec="3"><h3><a href="https://www.chinanews.com.cn/gn/2026/10-22/10719432.shtml">西藏那曲市巴青县发生 7.0 级地震</a> ⭐️ 9.0/10</h3><p>中国地震台网正式测定，10 月 22 日 22 时 33 分在西藏那曲市巴青县（北纬 32.40 度，东经 93.79 度）发生 7.0 级地震。此次地震的震源深度为 10 千米。</p>
+<p>rss · 中新网 国内 · 10月22日 14:49</p>
+<p><strong>「背景情况」</strong> 中国地震台网此前曾自动测定该地区发生 6.7 级左右地震，随后通过正式测定将震级修正为 7.0 级。</p>
+<p><strong>标签</strong>: <code>#地震</code>, <code>#西藏</code>, <code>#自然灾害</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="24">下一条 ↓</button></div></article><article id="item-china-news-3" data-i="25" data-sec="3"><h3><a href="https://www.ithome.com/1/016/743.htm">商务部将出台加快智能产品在消费领域应用工作方案</a> ⭐️ 8.0/10</h3><p>商务部在国新办举行的“开局起步‘十五五’”系列主题新闻发布会上宣布，将按照“十五五”规划部署，出台一项加快智能产品在消费领域应用的工作方案。该方案旨在通过推动商品消费扩容升级，为新产业和新赛道拓展市场空间，从而巩固消费对经济发展的主引擎作用。</p>
+<p>rss · IT之家 · 10月22日 14:59</p>
+<p><strong>「背景」</strong> 此次方案的方向在 2026 年 7 月 13 日国务院批复的《扩大消费“十五五”规划》中已有部署，该规划提出到 2030 年社会消费品零售总额达到 60 万亿元左右，并支持家居家电智能化升级及“人工智能 + 消费”。此外，工信部等七部门曾于 2026 年 1 月发布通知，对手机、平板电脑等四类智能产品购新提供补贴。</p>
+<p><strong>「影响」</strong> 该方案的出台将直接影响电子产品、人工智能及零售行业，通过政策引导推动单品智能向全屋智能发展，并扩大新一代智能终端的市场规模。</p>
+<p><strong>标签</strong>: <code>#商务部</code>, <code>#十五五规划</code>, <code>#智能产品</code>, <code>#消费升级</code>, <code>#人工智能</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="25">下一条 ↓</button></div></article><article id="item-china-news-4" data-i="26" data-sec="3"><h3><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPejJBOGt1SVJ5dUJHM0NlT0VKbUg1ZEhQc2d4Q2s1OFE4VHRXQTREUi01RkpXVU9uNmg0c3h5TTdLb0QwX1NxVHZOaURpUS1FZlMwbEFySVFjaWplRlgtckpjMFhNQjJ2OTNZLXNTSmVHbjRXMzZZbjdzRWFOc0ZqWllEM1NwbHJHQXZ5Tnkxb0FpVEJiSGh6VnVSQzNRaUgxd2tFa1FsZ2dKSDlsZ252ZkREbWtPWWhoWDdEQU9qSEhQLWRWa1HSAcgBQVVfeXFMTXpZa3dQR2lIT25OVnZ0ZmZZTTlteHZ2SWhDNWFUZmpFa3AyejZnalZrTFdzWlVDM0NXTGhkS25fckptalVFNWVELW9aLXJTTGc3aGk3MVkxSWIwQ3dFMVZySFBhM2RqNGpIa2VNVUJoekVoV3BqMFJ4elV2cVlVZHgxdkpiR3pmQ3dhU0dRbnhVWmhzajRlLUFVTUhqTkRjQ0hsR0lTTks0TlFvek9XYnJ6S3dQTWQtSlBDdjFVSHFxVEp0cW5naS0?oc=5">菲律宾批评中国驻菲使馆言论违背外交礼仪</a> ⭐️ 7.0/10</h3><p>菲律宾方面近日批评中国驻菲律宾大使馆的言论有所升级，并指责相关表态违背了外交礼仪。此次争议反映出中菲两国在外交层面的紧张局势仍在持续。</p>
+<p>google_news · 美国之音 · 10月22日 17:11</p>
+<p><strong>「背景」</strong> 2026 年 10 月 19 日，中国驻菲律宾大使井泉会见菲律宾外长拉扎罗，就菲方官员及政客污蔑抹黑中方的言论提出严正交涉。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://sputniknews.cn/20261020/1073695304.html">sputniknews.cn/20261020/1073695304.html</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#中菲关系</code>, <code>#外交争议</code>, <code>#南海问题</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="26">下一条 ↓</button></div></article><article id="item-china-news-5" data-i="27" data-sec="3"><h3><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTFA4QWdRSm8xZFotWmQwOHBnZEFOcTUtRXVONmxZQXhLbklGcXdWNFlvQWhKejdqbUZFaW1CeHZVY0JZWGZLWllnVExaMUJCUXhzNEhKemlHNm40aXpWbWZlazcwMUt4MGJOSW4yNmowQ0NsdDZCbXZ3?oc=5">商务部提出做强“购在中国”品牌以推动消费升级</a> ⭐️ 7.0/10</h3><p>商务部提出要做强“购在中国”品牌，旨在通过提升消费质量和升级消费模式来推动经济发展。该举措重点在于通过品牌建设推动消费提质升级，以增强内需消费动力。</p>
+<p>google_news · 新华网 · 10月22日 12:29</p>
+<p><strong>「背景」</strong> 商务部此前已会同相关部门出台以旧换新、离境退税及有奖发票等政策，并于 2025 年 4 月启动由商务部等 6 部门主导的“购在中国”系列活动，旨在释放多样化消费潜力并提升中国消费市场的吸引力。</p>
+<p><strong>「影响」</strong> 该战略将引导零售业通过提升服务质量和消费模式进行升级，以吸引更多消费者并优化国内消费结构。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://cj.sina.com.cn/articles/view/1644114654/61ff32de0200255oc">cj.sina.com.cn/articles/view/1644114654/61ff32de0200255oc</a></li>
+<li><a href="http://m.qdxin.cn/detail/359643.html">商 务 部 等6 部 门启动“ 购 在 中 国 ”系列活动 推动 消 费 提 质 升 级 -信网</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#商务部</code>, <code>#内需消费</code>, <code>#购在中国</code>, <code>#经济政策</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="27">下一条 ↓</button></div></article><article id="item-china-news-6" data-i="28" data-sec="3"><h3><a href="https://news.google.com/rss/articles/CBMi3AJBVV95cUxNLVpWV1JWWWhSTFA5aGVSRW1HNzdDeXFfcndDQjFBVktNWTRTdS1maklyTGJkWFBWNjJOVXBUa2FISHRaTDN3bmRYZG41VUxPcXRFZkMzRVZ0RzBJMnI0VWNDRy0wMUJYSzk3NkpFekF5bklpWmhCQ3ZVVzFzcTRhNTdlSUtUeUk2azhnRl9CUVlKZTlsNnhXc2k0Y3FkbkZueHphNDZ5SFFVUGJjWHQzbm9lZU43b3J1OEREbGhOb25ZSlJpLU9kMU5xTDZCWFlGdUthT1FSd1BXaENMb3pjWE04WHZadk5rOUhtdDBaU3FBSGNZbXM3czI1LTlPQjI5NDkybEM5TllhVHNjT0drdWY2SDEydE1Ick9ZVEFmb2ExUTFDeWdKWFR2V3g1eHhnZWhYcGlCaTBwcVA3QkJyTGRZcW1NTFhfeXhuYVI3cDEzaUMyeVNlbWstNEw?oc=5">中俄共同谴责欧亚地区的“破坏性外部干涉”</a> ⭐️ 7.0/10</h3><p>中国与俄罗斯近日共同发表声明，谴责在欧亚地区进行的所谓“破坏性外部干涉”。此次外交表态旨在强调两国在维护该地区安全与地缘政治稳定方面的立场一致。</p>
+<p>google_news · RFI · 10月22日 15:51</p>
+<p><strong>「背景」</strong> 此前，俄罗斯外交部于 2026 年 1 月 13 日曾强烈谴责外部势力对伊朗内政的破坏性干涉，并警告利用外部煽动的动荡作为借口对伊朗采取行动将危及中东及全球国际安全。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://en.iz.ru/en/2024043/2026-01-13/russian-foreign-ministry-strongly-condemned-external-interference-situation-iran">The Russian Foreign Ministry strongly condemned external ...</a></li>
+<li><a href="https://news-pravda.com/world/2026/01/13/1998139.html">Russia strongly condemns the disruptive external interference in...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#中俄关系</code>, <code>#欧亚地区</code>, <code>#外交政策</code>, <code>#地缘政治</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="28">下一条 ↓</button></div></article><button class="m-sec" data-sec="4"><span>国际焦点 · 10 条</span><span class="chev">▾</span></button><article id="item-world-news-1" data-i="29" data-sec="4"><h3><a href="https://www.bbc.co.uk/news/videos/c9146p1vx888o?at_medium=RSS&amp;at_campaign=rss">俄罗斯在同意恢复和平谈判后对乌克兰发动导弹袭击</a> ⭐️ 9.0/10</h3><p>俄罗斯总统普京在告知美国特使史蒂夫·威特科夫（Steve Witkoff）俄方原则上准备与美国和乌克兰恢复三方和平谈判后数小时内，俄军对乌克兰发动了三波导弹袭击。乌克兰总统泽连斯基周四表示，此次致命袭击表明莫斯科对战争的态度没有发生实质性改变。</p>
+<p>rss · BBC World · 10月22日 17:49</p>
+<p><strong>「背景」</strong> 美国总统特使史蒂夫·威特科夫（Steve Witkoff）于 2026 年 10 月 21 日前往圣彼得堡与俄罗斯总统普京会晤，旨在推动美国重启结束俄乌战争的谈判计划 [tool-1-2, tool-1-3]。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.theguardian.com/world/2026/oct/22/ukraine-war-briefing-peace-proposals-lack-substance-witkoff-putin-meeting">Ukraine war briefing: New peace proposals lack... | The Guardian</a></li>
+<li><a href="https://meduza.io/en/feature/2026/10/21/putin-and-u-s-envoy-witkoff-hold-talks-in-st-petersburg-as-washington-pushes-a-new-plan-to-end-the-war-in-ukraine">Putin and U . S . envoy Witkoff hold talks in St. Petersburg... — Meduza</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#俄乌战争</code>, <code>#和平谈判</code>, <code>#国际安全</code>, <code>#地缘政治</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="29">下一条 ↓</button></div></article><article id="item-world-news-2" data-i="30" data-sec="4"><h3><a href="https://www.aljazeera.com/news/2026/10/22/iran-says-seven-ships-hit-in-hormuz-strait-warns-us-of-wider-response?traffic_source=rss">伊朗称七艘船只在霍尔木兹海峡遇袭并警告美国</a> ⭐️ 9.0/10</h3><p>伊朗伊斯兰革命卫队（IRGC）于 2026 年 10 月 22 日宣布，有七艘船只在霍尔木兹海峡遭到袭击，并警告美国将采取更广泛的报复行动。美国方面否认了相关指控，并称伊朗此举是试图在美国选举前推高国际油价。</p>
+<p>rss · Al Jazeera · 10月22日 17:58</p>
+<p><strong>「背景」</strong> 自 2026 年 2 月下旬伊朗与美国爆发战争以来，霍尔木兹海峡局势持续紧张，双方均试图在该水域主张控制权 [tool-1-2]。10 月份该地区的船只袭击事件频发，截至 10 月 22 日已发生 27 起针对商船的袭击，为战争爆发以来的最高月度数值 [tool-1-1]。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://news.usni.org/2026/10/22/october-marks-highest-number-of-strait-of-hormuz-attacks">October Marks Highest Number of Strait of Hormuz Attacks</a></li>
+<li><a href="https://www.aljazeera.com/news/2026/10/17/us-and-iran-both-claim-control-of-strait-of-hormuz-amid-attacks-on-vessels">US and Iran both claim control of Strait of Hormuz amid ...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#伊朗</code>, <code>#美国</code>, <code>#霍尔木兹海峡</code>, <code>#地缘政治</code>, <code>#能源安全</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="30">下一条 ↓</button></div></article><article id="item-world-news-3" data-i="31" data-sec="4"><h3><a href="https://www.middleeasteye.net/live-blog/live-blog-update/us-military-says-iran-naval-blockade-reaches-100-days">美国中央司令部称对伊朗海上封锁已持续 100 天</a> ⭐️ 9.0/10</h3><p>美国中央司令部（Centcom）于 2026 年 10 月 22 日宣布，美军对伊朗实施的“钢铁之墙”海上封锁已持续 100 天。美方声称，除经美军授权的人道主义援助外，所有海运进出口均已被拦截，此举已阻止伊朗出口价值至少 250 亿美元的原油，并限制了伊朗伊斯兰革命卫队（IRGC）资助代理民兵、犯罪网络及恐怖主义的能力。</p>
+<p>rss · Middle East Eye · 10月22日 19:56</p>
+<p><strong>「背景」</strong> 此前，美国与伊朗之间的紧张局势持续升级，特朗普曾声称任何与伊朗的战争都将迅速结束，并提及对德黑兰核设施进行军事打击的可能性。同时，伊朗国家电视台曾播放一段视频，显示一艘油轮在霍尔木兹海峡因触雷而爆炸，引发了对该地区航运安全的担忧。</p>
+<p><strong>「影响」</strong> 此次封锁导致伊朗原油出口额损失至少 250 亿美元，直接冲击其国家财政并影响全球原油贸易供应。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://aninews.in/news/world/us/trump-asserts-iran-war-will-end-very-quickly-touts-military-strikes-on-tehrans-nuclear-sites20261018055742/">2026-10-18 — Trump asserts Iran war will end  very quickly ; touts military strikes on Tehran nuclear sites</a></li>
+<li><a href="https://www.aljazeera.com/video/newsfeed/2026/10/17/iranian-tv-airs-video-said-to-show-tanker-explosion-in-hormuz?traffic_source=rss">2026-10-18 — Iranian TV airs video said to show tanker explosion in Hormuz</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#美国</code>, <code>#伊朗</code>, <code>#海上封锁</code>, <code>#地缘政治</code>, <code>#原油贸易</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="31">下一条 ↓</button></div></article><article id="item-world-news-4" data-i="32" data-sec="4"><h3><a href="https://www.aljazeera.com/news/2026/10/22/who-warns-more-complex-ebola-outbreak-now-present-in-3-african-countries?traffic_source=rss">世卫组织警告三个非洲国家出现更复杂的埃博拉疫情</a> ⭐️ 8.0/10</h3><p>世界卫生组织（WHO）警告称，目前有三个非洲国家出现了更为复杂的埃博拉疫情。其中，尼日利亚本周确认了该国首例病例，卫生官员目前正在调查该患者的感染来源。</p>
+<p>rss · Al Jazeera · 10月22日 19:31</p>
+<p><strong>「背景」</strong> 此次疫情源于刚果民主共和国（DRC）由 Bundibugyo 病毒引发的埃博拉爆发，随后扩散至包括肯尼亚在内的其他国家 [tool-1-1, tool-1-2]。此次疫情的地理扩散范围超过了以往任何一次埃博拉爆发，已波及非洲三个不同地区 [tool-1-2]。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.channelstv.com/2026/10/21/uganda-debunks-claims-of-ebola-outbreak-after-nigeria-confirmed-infection/">Uganda Debunks Claims Of Ebola Outbreak After Nigeria Confirmed...</a></li>
+<li><a href="https://edition.cnn.com/2026/10/21/health/ebola-kenya-congo-nigeria-uganda-france">Ebola has spread from Congo to 4 other countries . A look at where...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#世界卫生组织</code>, <code>#埃博拉病毒</code>, <code>#公共卫生</code>, <code>#非洲</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="32">下一条 ↓</button></div></article><article id="item-world-news-5" data-i="33" data-sec="4"><h3><a href="https://www.france24.com/en/tv-shows/the-debate/20261022-back-to-the-bolsonaros-brazil-presidential-run-off-goes-down-to-the-wire">巴西总统决选进入白热化：极右翼博尔索纳罗与卢拉支持率接近</a> ⭐️ 8.0/10</h3><p>巴西总统选举将在本周日进行最终决选，极右翼候选人弗拉维奥·博尔索纳罗（Flavio Bolsonaro）与现任左翼总统路易斯·伊纳西奥·卢拉·达席尔瓦（Luiz Inacio Lula da Silva）的支持率极其接近。最新民调显示博尔索纳罗暂时领先，但在上周末一场激烈的辩论后，双方的差距已经缩小，目前处于统计误差范围内。</p>
+<p>rss · France 24 · 10月22日 18:18</p>
+<p><strong>「背景」</strong> 在 2022 年巴西总统大选中，现任总统卢拉击败了前总统雅伊尔·博尔索纳罗，该次选举结果为巴西历史上最接近的一次。在 2026 年大选的第一轮投票中，雅伊尔·博尔索纳罗的长子、里约热内卢州参议员弗拉维奥·博尔索纳罗以 47%的得票率领先于获得 45%得票率的卢拉，从而进入决选阶段。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Fl%C3%A1vio_Bolsonaro_2026_presidential_campaign">Flávio Bolsonaro 2026 presidential campaign - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2026_Brazilian_general_election">2026 Brazilian general election - Wikipedia</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#巴西大选</code>, <code>#博尔索纳罗</code>, <code>#卢拉</code>, <code>#拉丁美洲政治</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="33">下一条 ↓</button></div></article><article id="item-world-news-6" data-i="34" data-sec="4"><h3><a href="https://www.nytimes.com/2026/10/22/world/middleeast/saudi-houthis-yemen-dammam-airport.html">胡塞武装袭击沙特达曼机场导致两人死亡</a> ⭐️ 8.0/10</h3><p>2026 年 10 月 22 日，也门受伊朗支持的胡塞武装袭击了沙特阿拉伯的达曼机场，导致两人死亡。该机场地理位置靠近沙特阿美公司（Saudi Aramco）总部，且胡塞武装在过去数周内持续攻击沙特的航空和能源部门。与此同时，美国已指示部分外交人员撤离该地区。</p>
+<p>rss · 纽约时报 World · 10月22日 18:07</p>
+<p><strong>「背景」</strong> 在此次袭击发生前，受伊朗支持的胡塞武装已连续数周针对沙特阿拉伯的航空和能源领域发动攻击。与此同时，面对胡塞武装的推进，阿联酋与沙特阿拉伯此前已达成协议，决定重新合作应对也门冲突，由阿联酋恢复向反胡塞武装力量提供资金，沙特则提供空中掩护。</p>
+<p><strong>「潜在影响」</strong> 由于袭击目标位于沙特阿美总部附近且针对能源部门，此次升级可能对全球能源市场及原油供应稳定性产生影响。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.theguardian.com/world/2026/oct/17/uae-yemen-conflict-agreement-saudi-arabia-houthi-gains">2026-10-18 — UAE agrees with Saudi Arabia to re-enter Yemen conflict amid Houthi gains</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#胡塞武装</code>, <code>#沙特阿拉伯</code>, <code>#中东局势</code>, <code>#能源安全</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="34">下一条 ↓</button></div></article><article id="item-world-news-7" data-i="35" data-sec="4"><h3><a href="https://www.timesofisrael.com/report-israel-tells-us-hamas-doesnt-plan-to-disarm-and-is-rebuilding-its-forces/">以色列告知美国哈马斯无意解除武装并正重建力量</a> ⭐️ 8.0/10</h3><p>据报道，以色列方面告知美国，巴勒斯坦组织哈马斯并不打算解除武装，且在停火谈判陷入僵局期间正在重建其力量。以色列情报官员称，哈马斯目前拥有多达 40,000 名人员，已恢复其大部分隧道网络，并加强了对加沙地带的控制。</p>
+<p>rss · Times of Israel · 10月22日 18:21</p>
+<p><strong>「背景」</strong> 2026 年 7 月 30 日，美国总统特朗普提出一项协议，要求哈马斯解除武装，以色列则相应完成从加沙地带的撤军 [tool-1-1]。尽管美国支持的“和平委员会”（Board of Peace）在加沙的实施计划陷入停滞，但此前相关各方仍在推进哈马斯解除武装及国际重建合作的准备工作 [tool-1-2]。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://arabcenterdc.org/resource/full-text-of-the-proposed-agreement-on-hamas-disarmament-and-israeli-withdrawal-from-gaza/">Full Text of the Proposed Agreement on Hamas Disarmament and ...</a></li>
+<li><a href="https://www.longwarjournal.org/archives/2026/10/israel-reportedly-blocks-board-of-peace-base-in-gaza-idf-reports-31-ceasefire-violations-october-1-15.php">Israel reportedly blocks Board of Peace base in Gaza, IDF ...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#以色列</code>, <code>#哈马斯</code>, <code>#加沙战争</code>, <code>#美国外交</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="35">下一条 ↓</button></div></article><article id="item-world-news-8" data-i="36" data-sec="4"><h3><a href="https://www.aljazeera.com/news/2026/10/22/thousands-gather-at-final-student-led-rally-ahead-of-serbia-election?traffic_source=rss">塞尔维亚选举前夕数千名学生举行集会</a> ⭐️ 7.0/10</h3><p>在塞尔维亚周日举行选举前夕，数千名学生举行了最后一次由学生主导的集会，旨在结束总统武契奇（Aleksandar Vučić）长达 14 年的统治。与此同时，武契奇在城市的另一端举行了一场竞争性的集会。</p>
+<p>rss · Al Jazeera · 10月22日 20:21</p>
+<p><strong>「背景」</strong> 塞尔维亚大学生在过去近两年中一直领导着大规模的反腐败抗议活动。此次提前举行议会选举使该运动的目标从抗议转向通过投票罢免总统亚历山大·武契奇。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://apnews.com/article/serbia-students-election-vucic-b063b0ad14261bb74ad415bfed141941">From protests to election, Serbia&#x27;s students mount a ...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#塞尔维亚</code>, <code>#选举</code>, <code>#学生运动</code>, <code>#政治变革</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="36">下一条 ↓</button></div></article><article id="item-world-news-9" data-i="37" data-sec="4"><h3><a href="https://www.france24.com/en/americas/20261022-emirati-diplomat-could-become-next-un-chief-despite-human-rights-concerns-uae-sudan-un-secretary-general-lana-nusseibeh">阿联酋提名拉娜·努赛贝竞选联合国秘书长引发人权争议</a> ⭐️ 7.0/10</h3><p>阿联酋提名其前外交官拉娜·努赛贝（Lana Nusseibeh）竞选下一任联合国秘书长。人权捍卫者对此发出警告，认为阿联酋的人权记录存在问题，且被指控支持在苏丹制造屠杀的武装力量，若由该国外交官就任，可能会给联合国带来“灾难性”影响。</p>
+<p>rss · France 24 · 10月22日 21:18</p>
+<p><strong>「背景」</strong> 拉娜·努赛贝（Lana Nusseibeh）曾于 2013 年 9 月至 2024 年 4 月担任阿联酋驻联合国常驻代表 [tool-1-1]。此次竞选联合国秘书长是其在外交领域寻求更高职位的最新尝试 [tool-1-3]。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Lana_Nusseibeh">Lana Nusseibeh - Wikipedia</a></li>
+<li><a href="https://gulfnews.com/uae/government/uaes-lana-nusseibeh-enters-race-to-become-next-un-secretary-general-1.500719042">UAE &#x27;s Lana Nusseibeh enters race to become next UN ...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#联合国</code>, <code>#阿联酋</code>, <code>#人权</code>, <code>#外交</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="37">下一条 ↓</button></div></article><article id="item-world-news-10" data-i="38" data-sec="4"><h3><a href="https://www.france24.com/en/asia-pacific/20261022-many-dead-massive-earthquake-strikes-china-s-remote-tibet-region-magnitude-seven">中国西藏偏远地区发生 7.0 级强震</a> ⭐️ 7.0/10</h3><p>据中国官方媒体报道，中国西藏偏远地区于周四发生里氏 7.0 级强震，导致至少 16 人死亡，数十人受伤，数百栋房屋倒塌。此次地震是自 2024 年 1 月以来中国境内发生的强度最大地震，震后发生的余震导致当地居民逃离家园。</p>
+<p>rss · France 24 · 10月22日 21:09</p>
+<p><strong>「背景信息」</strong> 西藏地区地质构造复杂，处于印度板块与欧亚板块的碰撞带，历史上多次发生高强度地震。</p>
+<p><strong>标签</strong>: <code>#地震</code>, <code>#中国</code>, <code>#西藏</code>, <code>#自然灾害</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="38">下一条 ↓</button></div></article><button class="m-sec" data-sec="5"><span>智能电动车 · 11 条</span><span class="chev">▾</span></button><article id="item-smart-ev-1" data-i="39" data-sec="5"><h3><a href="https://electrek.co/2026/10/21/tesla-unsupervised-fsd-q2-2027-robotaxi-fleet/">特斯拉无监督 FSD 预计 2027 年 Q2 推出且仅限 Robotaxi 区域</a> ⭐️ 9.0/10</h3><p>特斯拉在 2026 年第三季度财报电话会议上宣布，面向车主的无监督全自动驾驶（FSD）预计将于 2027 年第二季度推出。AI 负责人 Ashok Elluswamy 明确该功能并非通用自动驾驶，而是允许车主将自己的车辆加入特斯拉管理的 Robotaxi 车队，仅在特定的 Robotaxi 管理区域内可用。</p>
+<p>rss · Electrek · 10月21日 22:18</p>
+<p><strong>「背景」</strong> 特斯拉此前已在奥斯汀部署规模超过 300 台的 Cybercab 组成 Robotaxi 车队，并计划通过 FSD v15 版本实现全天候运营 [tool-1-1]。此次更新将无监督 FSD 的范围限定在 Robotaxi 管理区域内，意味着车主车辆将以加入该管理车队的形式实现自动驾驶，而非在任意地点提供通用自动驾驶功能。</p>
+<p><strong>「影响」</strong> 这意味着 FSD 买家无法在所有环境下实现无监督驾驶，其车辆的自动驾驶能力将受限于特斯拉定义的管理区域，且运行模式将向共享车队管理模式转变。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.ithome.com/1/014/444.htm">2026-10-18 — 特斯拉奥斯汀 Robotaxi 运营延至午夜，FSD v15 将支持全天候</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#Tesla</code>, <code>#FSD</code>, <code>#Robotaxi</code>, <code>#自动驾驶</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="39">下一条 ↓</button></div></article><article id="item-smart-ev-2" data-i="40" data-sec="5"><h3><a href="https://www.teslarati.com/tesla-cybercab-gets-sale-date-at-last/">特斯拉 Cybercab 公布上市销售日期</a> ⭐️ 9.0/10</h3><p>特斯拉在 2026 年 10 月 21 日举行的第三季度财报电话会议上，正式公布了全自动驾驶车辆 Cybercab 的上市销售日期。此次公告结束了此前关于该车型短期内是否可供购买的猜测，明确了客户购买该款 Robotaxi 的时间表。</p>
+<p>rss · Teslarati · 10月22日 00:51</p>
+<p><strong>「背景」</strong> 在公布销售日期前，特斯拉已在奥斯汀部署规模超过 300 台的 Cybercab 车队，并计划通过 FSD v15 版本实现全天候运营 [tool-1-2]。同时，该车型已在澳大利亚各大城市进行巡展，但引发了当地交通工会与 Uber 的联合反对 [tool-1-1]。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://cleantechnica.com/2026/10/17/the-cybercab-has-landed-in-australia-transport-unions-gear-up-to-fight/">2026-10-18 — 特斯拉 Cybercab 登陆澳大利亚，工会联手 Uber 反对</a></li>
+<li><a href="https://www.ithome.com/1/014/444.htm">2026-10-18 — 特斯拉奥斯汀 Robotaxi 运营延至午夜，FSD v15 将支持全天候</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#Tesla</code>, <code>#Cybercab</code>, <code>#自动驾驶</code>, <code>#Robotaxi</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="40">下一条 ↓</button></div></article><article id="item-smart-ev-3" data-i="41" data-sec="5"><h3><a href="https://electrek.co/2026/10/22/tesla-building-own-maps-fsd-after-mocking-maps/">特斯拉将构建自有地图系统以优化 FSD 表现</a> ⭐️ 8.0/10</h3><p>特斯拉在 2026 年第三季度财报电话会议上透露，公司正在内部构建自己的地图系统，旨在解决 FSD 在限速识别、停车和路径选择方面长期存在的常见问题。这一决定标志着特斯拉技术路线的转变，此前该公司曾多次公开质疑依赖地图的自动驾驶方案，而现在则计划通过自有地图来优化导航和路径控制。</p>
+<p>rss · Electrek · 10月22日 20:03</p>
+<p><strong>「背景」</strong> 长期以来，特斯拉首席执行官马斯克一直主张自动驾驶系统不应依赖地图，认为依赖地图的方案过于脆弱，因此 FSD 倾向于采用纯视觉方案。与之相对，Waymo 等竞争对手则通过激光雷达构建高精地图，以提供更可靠的环境感知和路径规划。</p>
+<p><strong>「影响」</strong> 特斯拉将利用其庞大的车辆车队进行道路制图，使其在技术路径上向 Waymo 等竞争对手靠拢，通过预先构建的地图信息来弥补纯视觉系统在处理复杂环境时的可靠性不足。</p>
+<p><strong>标签</strong>: <code>#Tesla</code>, <code>#FSD</code>, <code>#自动驾驶</code>, <code>#高精地图</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="41">下一条 ↓</button></div></article><article id="item-smart-ev-4" data-i="42" data-sec="5"><h3><a href="https://www.ithome.com/1/016/740.htm">北汽星钽 5X 开启预售，起售价 13.99 万元</a> ⭐️ 8.0/10</h3><p>北汽新品牌星钽首款车型星钽 5X 正式开启预售，起售价 13.99 万元，预售 24 小时订单突破 17,876 台。该车为首款搭载华为干昆 ADS 5 Pro 的纯电“方盒子”车型，纯电版配备 81.9kWh 电池，CLTC 续航 625km，基于 800V 高压平台，30% 至 80% 直流快充需 14.5 分钟。全系共推出 7 款车型，提供纯电、插混及 2.0T 燃油三种动力方案。</p>
+<p>rss · IT之家 · 10月22日 14:51</p>
+<p><strong>「背景」</strong> 星钽是北京越野推出的新品牌，此前该品牌已推出定位豪华越野的“泰钽”品牌及其首款车型泰钽 700 [tool-1-2, tool-1-3]。此次星钽 5X 则延续硬派方盒轮廓，旨在通过多元动力方案拓宽目标用户圈层 [tool-1-1]。</p>
+<p><strong>「影响」</strong> 通过将华为高端的 ADS 5 Pro 智驾系统下放到 13.99 万元起步的入门级纯电 SUV 市场，北汽星钽 5X 将显著降低高阶智能驾驶的获取门槛，对同价位纯电方盒子车型构成强有力的竞争压力。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://m.autohome.com.cn/news/202610/1317911.html">【图】预售13.99... | 汽 车之家</a></li>
+<li><a href="https://www.163.com/auto/article/L3RCTJ9T0008856R.html">这是＂ 北 京 卫士＂！ 星 钽 5X或搭载华为ADS Pro高阶驾驶辅助</a></li>
+<li><a href="https://cj.sina.com.cn/articles/view/7393453319/1b8af250700101igbk">cj.sina.com.cn/articles/view/7393453319/1b8af250700101igbk</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#北汽星钽</code>, <code>#华为干昆 ADS</code>, <code>#纯电SUV</code>, <code>#智能驾驶</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="42">下一条 ↓</button></div></article><article id="item-smart-ev-5" data-i="43" data-sec="5"><h3><a href="https://cnevpost.com/2026/10/22/catl-battery-swap-baic-adoption/">北汽计划将旗下多品牌车型接入宁德时代换电网络</a> ⭐️ 7.0/10</h3><p>北汽集团计划将其旗下多个品牌的车型接入宁德时代的换电网络。为了支持换电站的建设，北汽将开放其经销商网络供基础设施部署。</p>
+<p>rss · CnEVPost · 10月22日 13:07</p>
+<p><strong>「背景」</strong> 换电技术旨在通过快速更换电池组来解决电动汽车充电时间长的问题，目前在市场上主要由蔚来等少数品牌主导。宁德时代作为全球领先的电池供应商，正试图通过构建通用换电网络，推动不同汽车品牌之间实现电池标准的统一与基础设施共享。</p>
+<p><strong>「影响」</strong> 此次合作将通过整合北汽的经销商渠道，加速宁德时代换电基础设施的覆盖速度，并扩大该换电标准的车型适用范围。</p>
+<p><strong>标签</strong>: <code>#宁德时代</code>, <code>#北汽</code>, <code>#换电技术</code>, <code>#基础设施</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="43">下一条 ↓</button></div></article><article id="item-smart-ev-6" data-i="44" data-sec="5"><h3><a href="https://cnevpost.com/2026/10/22/xpeng-gx-deliveries-30000/">小鹏 GX 交付量突破 3 万辆且营收超 100 亿元</a> ⭐️ 7.0/10</h3><p>小鹏汽车宣布其 GX 车型的交付量已突破 30,000 辆，并成为该品牌营收最快突破 100 亿元的车型。此外，该车型在中东地区的订单量已接近 4,000 辆。</p>
+<p>rss · CnEVPost · 10月22日 05:15</p>
+<p><strong>「背景信息」</strong> 小鹏 GX 是一款提供纯电（BEV）和增程（EREV）两种动力版本的 SUV，其中纯电版本配备最高 110 kWh 电池，增程版本则通过 1.5T 发动机驱动发电机以延长续航里程。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://www.auto-data.net/en/xpeng-gx-1.5t-63.3-kwh-503hp-4wd-extended-range-electric-57009">XPENG GX 1.5T 63.3 kWh (503 Hp) 4WD Extended Range Electric</a></li>
+<li><a href="https://www.auto-data.net/en/xpeng-gx-110-kwh-585hp-4wd-electric-57008">XPENG GX 110 kWh (585 Hp) 4WD Electric | Technical specs , data...</a></li>
+<li><a href="https://chinaevmarket.com/xpeng-gx-750-vs-1585-bev-vs-erev-range-export-guide/">XPeng GX 750 vs 1585: BEV vs EREV Range</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#小鹏汽车</code>, <code>#交付量</code>, <code>#中东市场</code>, <code>#电动汽车</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="44">下一条 ↓</button></div></article><article id="item-smart-ev-7" data-i="45" data-sec="5"><h3><a href="https://electrek.co/2026/10/22/byd-launch-luxury-ev-suv-623-miles-range/">比亚迪 Denza N8 豪华纯电 SUV 即将开启预订</a> ⭐️ 7.0/10</h3><p>比亚迪旗下 Denza 品牌将于下周开启豪华纯电 SUV N8 的预订。该车型为大型五座布局，厂商声称其 CLTC 续航里程超过 1,000 公里（约 623 英里）。</p>
+<p>rss · Electrek · 10月22日 21:18</p>
+<p><strong>「背景」</strong> Denza（腾势）是比亚迪旗下的高端豪华品牌，旨在通过更高规格的配置和定位，在豪华电动车市场与传统豪华品牌及新兴造车势力竞争。</p>
+<p><strong>标签</strong>: <code>#比亚迪</code>, <code>#Denza</code>, <code>#电动SUV</code>, <code>#续航里程</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="45">下一条 ↓</button></div></article><article id="item-smart-ev-8" data-i="46" data-sec="5"><h3><a href="https://electrek.co/2026/10/22/ferrari-luce-ev-us-price-560800/">法拉利首款纯电车型 Luce 美国起售价 560,800 美元</a> ⭐️ 7.0/10</h3><p>法拉利首款纯电动车型 Luce 的美国市场起售价定为 560,800 美元，该价格比此前市场预期的约 640,000 美元低了约 80,000 美元。法拉利已确认此价格，并计划于 2027 年第二季度开始在美国交付。</p>
+<p>rss · Electrek · 10月22日 19:02</p>
+<p><strong>「背景」</strong> Luce 是法拉利品牌历史上首款纯电动车型，该车此前于 2026 年 5 月首次亮相。</p>
+<p><strong>标签</strong>: <code>#法拉利</code>, <code>#电动汽车</code>, <code>#豪华车</code>, <code>#新车发布</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="46">下一条 ↓</button></div></article><article id="item-smart-ev-9" data-i="47" data-sec="5"><h3><a href="https://electrek.co/2026/10/22/fortescue-is-using-kuka-welding-robots-to-handle-6-mw-charging-cables-video/">Fortescue 采用 KUKA 工业机器人处理 6MW 大功率充电电缆</a> ⭐️ 7.0/10</h3><p>Fortescue 公司在澳大利亚 Pilbara 地区部署了经过改装的 KUKA 汽车组装线工业机器人，用于操作其 240 吨电动矿用卡车的充电电缆。该自动化系统旨在处理能够传输 6MW 极高功率的巨型电缆，以解决重型电动卡车充电时电缆过重而无法由人工或人形机器人高效操作的问题。</p>
+<p>rss · Electrek · 10月22日 14:10</p>
+<p><strong>「背景」</strong> Fortescue 与 Liebherr 自 2024 年起合作开发这套 6 MW 的重型矿用卡车充电系统，旨在为 Liebherr T264E 等电动矿用卡车提供电力。由于该系统所需的充电电缆体积巨大且重量极高，人工操作存在安全风险且难以实现，因此需要自动化方案来处理。</p>
+<p><strong>「影响」</strong> 通过将工业机器人应用于充电基础设施，Fortescue 为超大规模电动重卡的商业化运行提供了可行的电力传输方案，降低了对人工操作重型电缆的依赖。</p>
+<details><summary>参考链接</summary>
+<ul>
+<li><a href="https://mezha.net/eng/news/mezha-491a5edcb2caa7c208321808_fortescue_uses_kuka/">Fortescue uses KUKA robots to handle 6 MW charging cables for ...</a></li>
+
+</ul>
+</details>
+
+<p><strong>标签</strong>: <code>#电动重卡</code>, <code>#KUKA</code>, <code>#充电基础设施</code>, <code>#自动化</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="47">下一条 ↓</button></div></article><article id="item-smart-ev-10" data-i="48" data-sec="5"><h3><a href="https://www.ithome.com/1/016/749.htm">华为公布干昆智驾 ADS 5 各版本配置与功能差异</a> ⭐️ 7.0/10</h3><p>华为公布了干昆智驾 ADS 5 的三个版本配置差异：Max 版本搭载 896 线双光路图像级激光雷达及最多 4 个高精度固态激光雷达，独占漫游巡航辅助 RCA 和“车位到车位”功能；Pro 版本配备舱内激光视觉 Limera，支持城区和园区领航辅助 NCA；SE 版本则不配备激光雷达，仅支持城区车道巡航辅助 LCC 及基础安全功能。</p>
+<p>rss · IT之家 · 10月22日 15:31</p>
+<p><strong>「背景」</strong> 华为干昆智驾 ADS 5 于 2026 年 4 月 23 日正式发布，在算法层面引入了面向自动驾驶的 AI 智能体 WEWA 2.0 架构，通过云端 Multi-Agent 博弈技术与车端安全风险场技术优化出行策略。</p>
+<p><strong>「影响」</strong> 通过将最高阶的 RCA 和全场景“车位到车位”功能锁定在 Max 版本，华为进一步拉开了不同硬件配置车型在智能化体验上的梯度，将引导追求全场景自动驾驶的消费者选择高配车型。</p>
+<p><strong>标签</strong>: <code>#华为</code>, <code>#干昆智驾</code>, <code>#ADS 5</code>, <code>#自动驾驶</code>, <code>#智能汽车</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button><button data-act="next" data-i="48">下一条 ↓</button></div></article><article id="item-smart-ev-11" data-i="49" data-sec="5"><h3><a href="https://www.ithome.com/1/016/751.htm">问界汽车在陕西神木市超速撞击灯柱起火，司机遇难</a> ⭐️ 6.0/10</h3><p>一辆问界汽车在陕西省榆林市神木市路口发生碰撞起火事故，导致车内唯一乘员（司机）遇难。问界用户服务官方初步核实，事发时车辆处于人工驾驶状态，在限速 50km/h 的路段以 139.1km/h 的速度撞击方形交通灯立柱，导致车辆前部起火。初步分析认为，起火原因为高速剧烈撞击引发机舱线路短路及油液泄漏。</p>
+<p>rss · IT之家 · 10月22日 15:36</p>
+<p><strong>「背景信息」</strong> 该事故为一起单方交通事故，神木市交管大队表示，车辆起火后导致交通灯柱内部线路烧短路且灯柱变色，目前相关部门正在对灯柱进行喷漆修复。</p>
+<p><strong>标签</strong>: <code>#问界</code>, <code>#电动汽车安全</code>, <code>#交通事故</code>, <code>#车辆起火</code></p><div class="m-foot"><button data-act="toc">☰ 目录</button></div></article>
+    <div class="pager" id="pager"><button id="pg-prev">← 上一条</button><button id="pg-next">下一条 →</button></div>
+  </main>
+</div>
+<button class="totop" id="totop" aria-label="回到顶部">↑</button>
+<script>
+(function(){
+  'use strict';
+  var items=[].slice.call(document.querySelectorAll('.reader article'));
+  var navs=[].slice.call(document.querySelectorAll('.nav-item'));
+  var prev=document.getElementById('pg-prev'), next=document.getElementById('pg-next');
+  var pager=document.getElementById('pager');
+  var mq=window.matchMedia('(max-width: 1023px)');
+  var cur=0;
+  function isMobile(){return mq.matches;}
+  function show(i,scroll){
+    cur=Math.max(0,Math.min(items.length-1,i));
+    items.forEach(function(a,j){a.classList.toggle('active',j===cur);});
+    navs.forEach(function(n,j){n.classList.toggle('active',j===cur);});
+    if(prev)prev.disabled=cur===0;
+    if(next)next.disabled=cur===items.length-1;
+    if(!isMobile()){
+      if(pager)pager.classList.add('show');
+      var nav=navs[cur];
+      if(nav)nav.scrollIntoView({block:'nearest'});
+      if(scroll)window.scrollTo({top:0});
+    }
+  }
+  var sidebar=document.getElementById('sidebar');
+  var tocBtn=document.getElementById('m-toc');
+  function openDrawer(){ if(sidebar)sidebar.classList.add('open'); if(tocBtn)tocBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer(){ if(sidebar)sidebar.classList.remove('open'); if(tocBtn)tocBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  var dClose=document.getElementById('d-close');
+  if(dClose)dClose.addEventListener('click',closeDrawer);
+  if(tocBtn)tocBtn.addEventListener('click',function(){
+    if(sidebar&&sidebar.classList.contains('open')){closeDrawer();}else{openDrawer();}
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape')closeDrawer(); });
+  function expandFlow(sec){
+    items.forEach(function(a){ if(a.getAttribute('data-sec')===sec)a.classList.remove('sec-hidden'); });
+    var h=document.querySelector('.m-sec[data-sec="'+sec+'"]');
+    if(h){h.classList.remove('collapsed');var cv=h.querySelector('.chev');if(cv)cv.textContent='▾';}
+  }
+  navs.forEach(function(n,j){n.addEventListener('click',function(){
+    if(isMobile()){
+      closeDrawer();
+      var a=items[j]; if(a){expandFlow(a.getAttribute('data-sec'));a.scrollIntoView({behavior:'smooth',block:'start'});}
+    } else { show(j,true); }
+  });});
+  var mTop=document.getElementById('m-top');
+  if(mTop)mTop.addEventListener('click',function(){closeDrawer();window.scrollTo({top:0,behavior:'smooth'});});
+  var totop=document.getElementById('totop');
+  if(totop){
+    window.addEventListener('scroll',function(){
+      totop.classList.toggle('show',window.scrollY>600);
+    },{passive:true});
+    totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  }
+  document.querySelectorAll('.m-foot button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var act=b.getAttribute('data-act');
+      if(act==='toc'){ openDrawer(); }
+      if(act==='next'){ var nx=items[parseInt(b.getAttribute('data-i'),10)+1];
+        if(nx){expandFlow(nx.getAttribute('data-sec'));nx.scrollIntoView({behavior:'smooth',block:'start'});} }
+    });
+  });
+  var mCur=document.getElementById('m-cur');
+  if('IntersectionObserver' in window && mCur){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          var j=parseInt(en.target.getAttribute('data-i'),10);
+          var t=navs[j]?navs[j].querySelector('.t').textContent:'';
+          mCur.textContent=(j+1)+'/'+items.length+' · '+t;
+          navs.forEach(function(n,k){n.classList.toggle('active',k===j);});
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    items.forEach(function(a){io.observe(a);});
+  }
+  if(prev)prev.addEventListener('click',function(){show(cur-1,true);});
+  if(next)next.addEventListener('click',function(){show(cur+1,true);});
+  document.addEventListener('keydown',function(e){
+    if(isMobile())return;
+    if(e.key==='ArrowRight')show(cur+1,true);
+    if(e.key==='ArrowLeft')show(cur-1,true);
+  });
+  document.querySelectorAll('.reader article p').forEach(function(p){
+    var t=p.textContent.trim();
+    if(/^(Tags|\u6807\u7b7e)\s*:/.test(t))p.classList.add('tag-line');
+    if(/^(rss|reddit|github|hackernews|hn|telegram)\s*·/i.test(t))p.classList.add('source-line');
+  });
+  document.querySelectorAll('.sec-name').forEach(function(h){
+    h.addEventListener('click',function(){
+      var box=h.parentNode.querySelector('.sec-items');
+      var cv=h.querySelector('.chev');
+      var closed=box.classList.toggle('collapsed');
+      if(cv)cv.textContent=closed?'▸':'▾';
+    });
+  });
+  document.querySelectorAll('.m-sec').forEach(function(h){
+    h.addEventListener('click',function(){
+      var sec=h.getAttribute('data-sec');
+      var cv=h.querySelector('.chev');
+      var closed=h.classList.toggle('collapsed');
+      items.forEach(function(a){ if(a.getAttribute('data-sec')===sec)a.classList.toggle('sec-hidden',closed); });
+      if(cv)cv.textContent=closed?'▸':'▾';
+    });
+  });
+  if(mq.addEventListener)mq.addEventListener('change',function(){
+    if(!isMobile()){
+      items.forEach(function(a){a.classList.remove('sec-hidden');});
+      document.querySelectorAll('.m-sec').forEach(function(h){h.classList.remove('collapsed');var cv=h.querySelector('.chev');if(cv)cv.textContent='▾';});
+    }
+    show(cur,false);
+  });
+  show(0,false);
+})();
+</script>
+</body>
+</html>
