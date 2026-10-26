@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>日报上线时间 · Horizon 每日速递</title>
+<style>
+:root{--bg:#FAF9F6;--card:#fff;--ink:#1C1917;--mut:#57534E;--line:#E7E2D9;--acc:#B91C1C;--link:#1E40AF;
+--serif:"Newsreader","Noto Serif SC","Songti SC","Source Han Serif SC",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+.mast{padding:56px 0 0;border-bottom:2px solid var(--ink);padding-bottom:28px}
+.eyebrow{font-size:14px;letter-spacing:.26em;color:var(--acc);font-weight:600}
+.mast h1{font-family:var(--serif);font-size:clamp(32px,5.4vw,44px);line-height:1.2;margin-top:14px}
+.mast .sub{color:var(--mut);margin-top:12px;max-width:46em}
+table{width:100%;border-collapse:collapse;margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+th,td{padding:12px 16px;text-align:left;font-size:15px;border-bottom:1px solid var(--line)}
+th{font-size:13px;letter-spacing:.08em;color:var(--mut);background:#F5F2EC}
+tr:last-child td{border-bottom:none}
+td.t{font-family:var(--serif);font-weight:700;white-space:nowrap}
+td.d{white-space:nowrap}
+.note{margin-top:24px;color:var(--mut);font-size:14px;line-height:1.9;max-width:46em}
+footer{max-width:1020px;margin:0 auto;padding:36px 24px 44px;color:var(--mut);font-size:12.5px;line-height:1.8}
+footer a{color:var(--link)}
+@media (max-width:640px){th,td{padding:10px 10px;font-size:13.5px}}
+</style></head><body>
+<main class="wrap">
+<div class="mast">
+  <p class="eyebrow">HORIZON 每日速递</p>
+  <h1>日报上线时间</h1>
+  <p class="sub">每期日报的计划上线时间与实际上线时间。累计 10 期；实行「07:00 前上线」硬约定以来 6 期，达标 4 期、迟到 2 期。</p>
+</div>
+<table>
+<tr><th>日期</th><th>星期</th><th>计划上线时间</th><th>实际上线时间</th><th>结果</th></tr>
+<tr><td class="d">2026-10-26</td><td>星期一</td><td>07:00 前上线</td><td class="t">08:08:00</td><td>❌ 迟 1 小时 08 分</td></tr>
+<tr><td class="d">2026-10-25</td><td>星期日</td><td>07:00 前上线</td><td class="t">06:13:22</td><td>✅ 提前 47 分</td></tr>
+<tr><td class="d">2026-10-24</td><td>星期六</td><td>07:00 前上线</td><td class="t">06:18:05</td><td>✅ 提前 42 分</td></tr>
+<tr><td class="d">2026-10-23</td><td>星期五</td><td>07:00 前上线</td><td class="t">06:39:18</td><td>✅ 提前约 20 分</td></tr>
+<tr><td class="d">2026-10-22</td><td>星期四</td><td>07:00 前上线</td><td class="t">09:02:14</td><td>❌ 迟 2 小时 02 分</td></tr>
+<tr><td class="d">2026-10-21</td><td>星期三</td><td>07:00 前上线</td><td class="t">06:30:25</td><td>✅ 提前约 30 分</td></tr>
+<tr><td class="d">2026-10-20</td><td>星期二</td><td>07:00 开跑（无上线截止）</td><td class="t">11:09:17</td><td>故障补跑，大幅迟到</td></tr>
+<tr><td class="d">2026-10-19</td><td>星期一</td><td>07:00 开跑（无上线截止）</td><td class="t">07:37:40</td><td>开跑后约 40 分</td></tr>
+<tr><td class="d">2026-10-18</td><td>星期日</td><td>07:00 开跑（无上线截止）</td><td class="t">07:33:17</td><td>首期自动版约 07:36 完成</td></tr>
+<tr><td class="d">2026-10-17</td><td>星期六</td><td>无约定（手动首发）</td><td class="t">16:16:04</td><td>—</td></tr>
+</table>
+<p class="note">口径：实际上线时间 = 当日日报推送到 GitHub 的完成时刻（北京时间）；线上对外可见通常再晚 1–9 分钟（GitHub Pages 部署 + Cloudflare 边缘传播）。「07:00 前上线」硬约定为 2026-10-20 下午定下、10-21 期起实行，此前只约定 07:00 开跑、无上线截止。自 2026-10-27 起，每期实际上线时间由日报流水线在推送完成后自动记入本表。</p>
+</main>
+<footer><p><a href="index.html">← 回到最新一期</a> · <a href="archive.html">往期日报</a></p>
+<p>Horizon 每日速递 · 日报上线时间统计</p></footer>
+</body></html>
