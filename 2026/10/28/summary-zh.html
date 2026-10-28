@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Horizon 每日速递 - 2026-10-28</title>
+<style>
+:root{--bg:#FAF9F6;--card:#fff;--ink:#1C1917;--mut:#57534E;--line:#E7E2D9;--acc:#B91C1C;--link:#1E40AF;--gold:#92400E;
+--serif:"Newsreader","Noto Serif SC","Songti SC","Source Han Serif SC",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit} :focus-visible{outline:2px solid var(--link);outline-offset:3px}
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--acc);width:0;z-index:60}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.navin{max-width:1020px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:24px}
+.wordmark{font-family:var(--serif);font-weight:700;font-size:24px;text-decoration:none;letter-spacing:.04em} .wordmark i{color:var(--acc);font-style:normal}
+.navlinks{display:flex;gap:18px;margin-left:auto;overflow-x:auto;scrollbar-width:none} .navlinks::-webkit-scrollbar{display:none}
+.navlinks a{text-decoration:none;font-size:14px;color:var(--mut);white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent}
+.navlinks a:hover{color:var(--ink);border-color:var(--acc)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+.mast{padding:56px 0 0;border-bottom:2px solid var(--ink);padding-bottom:28px}
+.eyebrow{font-size:14px;letter-spacing:.26em;color:var(--acc);font-weight:600}
+.mast h1{font-family:var(--serif);font-size:clamp(32px,5.4vw,48px);line-height:1.2;margin-top:14px;text-wrap:balance}
+.mast .sub{color:var(--mut);margin-top:12px;max-width:42em;font-size:16px}
+.stats{display:flex;margin-top:24px;border:1px solid var(--line);background:var(--card);border-radius:6px;overflow:hidden;flex-wrap:wrap}
+.stat{flex:1;min-width:120px;padding:14px 18px;text-align:center} .stat+.stat{border-left:1px solid var(--line)}
+.stat b{display:block;font-family:var(--serif);font-size:24px} .stat span{font-size:12.5px;color:var(--mut)}
+.topgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.topcard{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:6px;padding:20px;text-decoration:none;transition:transform .25s,box-shadow .25s;display:block}
+.topcard:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(28,25,23,.09)}
+.tc-col{font-size:12.5px;color:var(--acc);font-weight:600;letter-spacing:.08em}
+.topcard h3{font-family:var(--serif);font-size:19px;line-height:1.45;margin:8px 0 6px}
+.tc-ov{font-size:14px;color:var(--mut);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sc{font-family:var(--serif);font-weight:700;font-size:14px;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.sc.s9{background:var(--acc);color:#fff} .sc.s8{background:#FDECEC;color:var(--acc)} .sc.s7{background:#F5EFE3;color:var(--gold)} .sc.slo{background:#F0EDE8;color:var(--mut)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 4px;align-items:center}
+.filters .fl{font-size:14px;color:var(--mut);margin-right:2px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 15px;font-size:14px;cursor:pointer;font-family:var(--sans);min-height:44px;transition:all .2s}
+.chip:hover{border-color:var(--ink)} .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sec{margin-top:52px;scroll-margin-top:76px}
+.sechead{display:flex;align-items:center;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.secno{font-family:var(--serif);font-size:32px;color:var(--line);font-weight:700;line-height:1}
+.kicker{font-size:12.5px;letter-spacing:.22em;color:var(--acc);font-weight:600}
+.sechead h2{font-family:var(--serif);font-size:32px;line-height:1.2}
+.secavg{margin-left:auto;font-size:14px;color:var(--mut);white-space:nowrap}
+.item{display:flex;gap:18px;padding:22px 4px;border-bottom:1px solid var(--line)}
+.idx{font-family:var(--serif);font-size:19px;color:#C9BFA9;font-weight:700;min-width:34px;padding-top:2px}
+.ibody{flex:1;min-width:0}
+.itop{display:flex;gap:12px;align-items:flex-start} .itop h3{font-family:var(--serif);font-size:19px;line-height:1.5;flex:1}
+.itop h3 a{text-decoration:none} .itop h3 a:hover{color:var(--acc);text-decoration:underline;text-underline-offset:4px}
+.ov{color:#3F3A34;margin-top:6px;font-size:16px} .ov a{color:var(--link)}
+.meta{font-size:12.5px;color:var(--mut);margin-top:8px} .meta a{color:var(--link)}
+.more{margin-top:10px} .more summary{cursor:pointer;font-size:14px;color:var(--link);min-height:32px}
+.morein{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 18px;margin-top:6px}
+.morein p{font-size:14px;color:#3F3A34} .morein p+p{margin-top:8px} .morein .refs a{color:var(--link)}
+.tags{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12.5px;background:#F0EDE8;color:var(--mut);border-radius:4px;padding:2px 8px}
+.hidden{display:none!important}
+.band{margin-top:72px;background:var(--ink);color:#FAF9F6} .bandin{max-width:1020px;margin:0 auto;padding:44px 24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.bandin h2{font-family:var(--serif);font-size:24px;color:#FAF9F6} .bandin p{color:#D6D0C4;font-size:14px}
+.bandin a{margin-left:auto;background:var(--acc);color:#fff;text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:600;font-size:14px;white-space:nowrap}
+footer{max-width:1020px;margin:0 auto;padding:30px 24px 44px;color:var(--mut);font-size:12.5px;line-height:1.8}
+footer a{color:var(--link)}
+#topBtn{position:fixed;right:18px;bottom:18px;background:var(--ink);color:#fff;border:none;border-radius:999px;padding:11px 18px;font-size:14px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;z-index:55}
+#topBtn.show{opacity:1;pointer-events:auto}
+.rv{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease} .rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none} html{scroll-behavior:auto}}
+@media (max-width:820px){.topgrid{grid-template-columns:1fr} .navlinks{display:none} .item{gap:10px} .idx{min-width:26px}}
+@media print{.nav,.progress,.filters,#topBtn,.band{display:none} .rv{opacity:1;transform:none} body{background:#fff}}
+</style></head><body>
+<div class="progress" id="prog" aria-hidden="true"></div>
+<header class="nav"><div class="navin"><a class="wordmark" href="#top">HORIZON<i>.</i></a>
+<nav class="navlinks" aria-label="栏目导航"><a href="#sec0">科技新闻</a><a href="#sec1">财经新闻</a><a href="#sec2">国内重要新闻</a><a href="#sec3">国际焦点</a><a href="#sec4">智能电动车</a></nav></div></header>
+<main class="wrap" id="top">
+<div class="mast">
+  <p class="eyebrow">HORIZON 每日速递</p>
+  <h1>2026 年 10 月 28 日，星期三</h1>
+  <p class="sub">从 839 条内容中筛选出 29 条重要资讯，5 个栏目，全中文。先看最高分，再按栏目读。</p>
+  <div class="stats">
+    <div class="stat"><b>839 → 29</b><span>候选池 → 入选</span></div>
+    <div class="stat"><b>5</b><span>个栏目</span></div>
+    <div class="stat"><b>9.0</b><span>今日最高分（1 条）</span></div>
+    <div class="stat"><b>—</b><span>当日实际上线时间</span></div>
+  </div>
+  <div class="topgrid"><a class="topcard rv" href="https://www.chinanews.com.cn/gn/2026/10-28/10722312.shtml" rel="noopener"><p class="tc-col">国内重要新闻 · <span class="sc s9">9.0</span></p><h3>刘延东同志逝世</h3><p class="tc-ov">原国务委员、国务院原副总理刘延东因病于 2026 年 10 月 28 日在北京逝世，享年 81 岁。</p></a>
+<a class="topcard rv" href="https://www.theguardian.com/world/live/2026/oct/28/spain-train-crash-toledo-europe-latest-news-updates" rel="noopener"><p class="tc-col">国际焦点 · <span class="sc s8">8.0</span></p><h3>西班牙两列火车相撞至少 30 人死亡——最新进展</h3><p class="tc-ov">西班牙托莱多省两列高速列车相撞，至少 30 人死亡，当地官员称伤亡人数可能进一步上升。</p></a>
+<a class="topcard rv" href="https://www.infoq.cn/article/UZHyp2ZTvI59sQWEtNSG?utm_source=rss&amp;utm_medium=article" rel="noopener"><p class="tc-col">科技新闻 · <span class="sc s7">7.0</span></p><h3>通过 SNMP 处理程序进行 ZCS 命令注入，实现未经身份验证的远程代码执行</h3><p class="tc-ov">文章介绍 ZCS 中通过 SNMP 处理程序存在的命令注入漏洞，可导致未经身份验证的远程代码执行。</p></a>
+</div>
+</div>
+<div class="filters" role="group" aria-label="按栏目筛选"><span class="fl">只看：</span>
+  <button class="chip" aria-pressed="true" data-sec="-1">全部栏目</button><button class="chip" aria-pressed="false" data-sec="0">科技新闻 5</button><button class="chip" aria-pressed="false" data-sec="1">财经新闻 2</button><button class="chip" aria-pressed="false" data-sec="2">国内重要新闻 1</button><button class="chip" aria-pressed="false" data-sec="3">国际焦点 10</button><button class="chip" aria-pressed="false" data-sec="4">智能电动车 11</button>
+</div>
+<section class="sec" id="sec0" data-sec="0"><header class="sechead rv"><span class="secno">01</span><div><p class="kicker">TECH · 5 条</p><h2>科技新闻</h2></div><span class="secavg">均分 7.0</span></header><article class="item rv" id="item-tech-news-1"><div class="idx">01</div><div class="ibody"><div class="itop"><h3><a href="https://www.infoq.cn/article/UZHyp2ZTvI59sQWEtNSG?utm_source=rss&amp;utm_medium=article" rel="noopener">通过 SNMP 处理程序进行 ZCS 命令注入，实现未经身份验证的远程代码执行</a></h3><span class="sc s7">7.0</span></div><p class="ov">文章介绍 ZCS 中通过 SNMP 处理程序存在的命令注入漏洞，可导致未经身份验证的远程代码执行。</p><p class="meta">rss · InfoQ 中文站 · 10月28日 17:00</p><p class="tags"><span class="tag">#安全漏洞</span><span class="tag">#命令注入</span><span class="tag">#远程代码执行</span><span class="tag">#SNMP</span><span class="tag">#ZCS</span></p></div></article>
+<article class="item rv" id="item-tech-news-2"><div class="idx">02</div><div class="ibody"><div class="itop"><h3><a href="https://www.ithome.com/1/019/131.htm" rel="noopener">摩尔线程开源 Megatron-MUSA-Titan，聚焦万卡级集群的万亿参数 MoE 模型训练</a></h3><span class="sc s7">7.0</span></div><p class="ov">摩尔线程开源 Megatron-MUSA-Titan，提供面向 MUSA GPU 的万卡级万亿参数 MoE 预训练与强化学习训练基础设施。</p><p class="meta">rss · IT之家 · 10月28日 10:16</p><p class="tags"><span class="tag">#MoE训练</span><span class="tag">#国产GPU</span><span class="tag">#开源项目</span><span class="tag">#FP8</span><span class="tag">#强化学习</span></p></div></article>
+<article class="item rv" id="item-tech-news-3"><div class="idx">03</div><div class="ibody"><div class="itop"><h3><a href="https://www.ithome.com/1/019/129.htm" rel="noopener">华为老机型集体转正后，鸿蒙 7（API 26）存量设备占比升至 77%</a></h3><span class="sc s7">7.0</span></div><p class="ov">华为开放 HarmonyOS 7（API 26）不限量升级后，其存量设备占比在数周内升至约 77%，开发者应优先评估适配 API 26。</p><p class="meta">rss · IT之家 · 10月28日 10:14</p><p class="tags"><span class="tag">#HarmonyOS 7</span><span class="tag">#华为</span><span class="tag">#开发者适配</span><span class="tag">#移动操作系统</span><span class="tag">#API 26</span></p></div></article>
+<article class="item rv" id="item-tech-news-4"><div class="idx">04</div><div class="ibody"><div class="itop"><h3><a href="https://www.ithome.com/1/019/099.htm" rel="noopener">Liquid AI 发布 LFM3 模型家族，首批多款均基于 LFM3-1.7B-Base</a></h3><span class="sc s7">7.0</span></div><p class="ov">Liquid AI 发布基于三混合层架构和 22T 词元预训练的 LFM3 模型家族，首批包含文本、视觉、音频、决策和全能等多款基于 LFM3-1.7B-Base 的模型，其中 LFM-1.7B 支持 256K 上下文并以更少参数超越上代。</p><p class="meta">rss · IT之家 · 10月28日 09:49</p><p class="tags"><span class="tag">#Liquid AI</span><span class="tag">#LFM3</span><span class="tag">#多模态模型</span><span class="tag">#高效推理</span><span class="tag">#大模型发布</span></p></div></article>
+<article class="item rv" id="item-tech-news-5"><div class="idx">05</div><div class="ibody"><div class="itop"><h3><a href="https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-now-exploiting-critical-node2shell-flaw/" rel="noopener">CISA 警告黑客正利用关键 Node2Shell 漏洞</a></h3><span class="sc s7">7.0</span></div><p class="ov">CISA 警告称黑客已开始利用名为 Node2Shell 的关键 Brotli 漏洞。</p><p class="meta">rss · BleepingComputer · 10月28日 10:46</p><p class="tags"><span class="tag">#网络安全</span><span class="tag">#漏洞利用</span><span class="tag">#Node.js</span><span class="tag">#Brotli</span><span class="tag">#CISA</span></p></div></article>
+</section>
+<section class="sec" id="sec1" data-sec="1"><header class="sechead rv"><span class="secno">02</span><div><p class="kicker">BLOG · 2 条</p><h2>财经新闻</h2></div><span class="secavg">均分 7.0</span></header><article class="item rv" id="item-finance-news-1"><div class="idx">01</div><div class="ibody"><div class="itop"><h3><a href="https://news.cnyes.com/news/id/6639659" rel="noopener">联电法说：追加 32 亿美元资本支出 三年内 AI 营收占比冲 25%</a></h3><span class="sc s7">7.0</span></div><p class="ov">联电董事会核准追加约 32 亿美元资本支出以扩建新加坡和台南厂区，并预计三年内 AI 相关营收占比从约 3 亿美元提升至 25%。</p><p class="meta">rss · 巨亨网 头条 · 10月28日 10:26</p><p class="tags"><span class="tag">#联电</span><span class="tag">#资本支出</span><span class="tag">#AI半导体</span><span class="tag">#先进封装</span><span class="tag">#矽光子</span></p></div></article>
+<article class="item rv" id="item-finance-news-2"><div class="idx">02</div><div class="ibody"><div class="itop"><h3><a href="https://www.bloomberg.com/news/articles/2026-10-28/ge-vernova-agrees-to-pay-9-billion-to-acquire-trench-group" rel="noopener">GE Vernova 同意以 90 亿美元收购 Trench Group</a></h3><span class="sc s7">7.0</span></div><p class="ov">GE Vernova 同意以 90 亿美元收购 Trench Group，以扩大高压电网设备供应能力并应对电力需求激增。</p><p class="meta">rss · Bloomberg Markets · 10月28日 10:16</p><p class="tags"><span class="tag">#电力设备</span><span class="tag">#并购交易</span><span class="tag">#电网基础设施</span><span class="tag">#GE Vernova</span></p></div></article>
+</section>
+<section class="sec" id="sec2" data-sec="2"><header class="sechead rv"><span class="secno">03</span><div><p class="kicker">FINANCE · 1 条</p><h2>国内重要新闻</h2></div><span class="secavg">均分 9.0</span></header><article class="item rv" id="item-china-news-1"><div class="idx">01</div><div class="ibody"><div class="itop"><h3><a href="https://www.chinanews.com.cn/gn/2026/10-28/10722312.shtml" rel="noopener">刘延东同志逝世</a></h3><span class="sc s9">9.0</span></div><p class="ov">原国务委员、国务院原副总理刘延东因病于 2026 年 10 月 28 日在北京逝世，享年 81 岁。</p><p class="meta">rss · 中新网 国内 · 10月28日 10:03</p><p class="tags"><span class="tag">#刘延东</span><span class="tag">#逝世</span><span class="tag">#原副总理</span><span class="tag">#时政</span><span class="tag">#国家领导人</span></p></div></article>
+</section>
+<section class="sec" id="sec3" data-sec="3"><header class="sechead rv"><span class="secno">04</span><div><p class="kicker">CHINA · 10 条</p><h2>国际焦点</h2></div><span class="secavg">均分 7.3</span></header><article class="item rv" id="item-world-news-1"><div class="idx">01</div><div class="ibody"><div class="itop"><h3><a href="https://www.theguardian.com/world/live/2026/oct/28/spain-train-crash-toledo-europe-latest-news-updates" rel="noopener">西班牙两列火车相撞至少 30 人死亡——最新进展</a></h3><span class="sc s8">8.0</span></div><p class="ov">西班牙托莱多省两列高速列车相撞，至少 30 人死亡，当地官员称伤亡人数可能进一步上升。</p><p class="meta">rss · The Guardian World · 10月28日 10:52</p><p class="tags"><span class="tag">#西班牙</span><span class="tag">#火车事故</span><span class="tag">#托莱多</span><span class="tag">#重大灾难</span><span class="tag">#国际新闻</span></p></div></article>
+<article class="item rv" id="item-world-news-2"><div class="idx">02</div><div class="ibody"><div class="itop"><h3><a href="https://www.theguardian.com/world/live/2026/oct/28/israel-election-results-live-updates-exit-polls-netanyahu-likud-eisenkot-latest-news" rel="noopener">以色列选举结果直播：计票持续，出口民调显示无明确胜者</a></h3><span class="sc s8">8.0</span></div><p class="ov">以色列议会选举计票仍在进行，出口民调显示内塔尼亚胡联盟与反对派阵营均未达到组阁所需的 61 席，巴勒斯坦政党预计大幅增席。</p><p class="meta">rss · The Guardian World · 10月28日 11:00</p><p class="tags"><span class="tag">#以色列选举</span><span class="tag">#议会政治</span><span class="tag">#组阁谈判</span><span class="tag">#巴勒斯坦政党</span><span class="tag">#中东局势</span></p></div></article>
+<article class="item rv" id="item-world-news-3"><div class="idx">03</div><div class="ibody"><div class="itop"><h3><a href="https://www.nytimes.com/live/2026/10/28/world/spain-train-crash-toledo" rel="noopener">实时报道：西班牙官员称火车相撞事故至少 30 人遇难</a></h3><span class="sc s8">8.0</span></div><p class="ov">西班牙托莱多附近发生高速列车追尾事故，官员称至少 30 人遇难。</p><p class="meta">rss · 纽约时报 World · 10月28日 11:06</p><p class="tags"><span class="tag">#西班牙</span><span class="tag">#火车事故</span><span class="tag">#重大灾难</span><span class="tag">#交通安全</span><span class="tag">#国际新闻</span></p></div></article>
+<article class="item rv" id="item-world-news-4"><div class="idx">04</div><div class="ibody"><div class="itop"><h3><a href="https://www.aljazeera.com/news/2026/10/28/us-midterms-six-days-left-who-leads-in-the-polls-as-trump-obama-rally?traffic_source=rss" rel="noopener">美国中期选举：还剩六天——特朗普、奥巴马助选之际，谁在民调中领先？</a></h3><span class="sc s7">7.0</span></div><p class="ov">美国中期选举前六天，民主党在全国民调中领先，特朗普和奥巴马在关键州助选。</p><p class="meta">rss · Al Jazeera · 10月28日 10:31</p><p class="tags"><span class="tag">#美国中期选举</span><span class="tag">#民调</span><span class="tag">#特朗普</span><span class="tag">#奥巴马</span><span class="tag">#国会控制权</span></p></div></article>
+<article class="item rv" id="item-world-news-5"><div class="idx">05</div><div class="ibody"><div class="itop"><h3><a href="https://www.aljazeera.com/news/2026/10/28/norway-and-finland-hold-rare-phone-call-with-putin-what-that-means?traffic_source=rss" rel="noopener">挪威和芬兰与普京进行罕见通话：这意味着什么</a></h3><span class="sc s7">7.0</span></div><p class="ov">挪威和芬兰领导人罕见与普京通话，试图影响在阿布扎比由美国斡旋的结束乌克兰战争谈判。</p><p class="meta">rss · Al Jazeera · 10月28日 10:31</p><p class="tags"><span class="tag">#乌克兰战争</span><span class="tag">#外交斡旋</span><span class="tag">#普京</span><span class="tag">#北欧</span><span class="tag">#和平谈判</span></p></div></article>
+<article class="item rv" id="item-world-news-6"><div class="idx">06</div><div class="ibody"><div class="itop"><h3><a href="https://www.france24.com/en/israel-netanyahu-edges-closer-to-a-majority" rel="noopener">以色列：内塔尼亚胡更接近获得多数席位</a></h3><span class="sc s7">7.0</span></div><p class="ov">以色列大选计票显示内塔尼亚胡阵营逐渐接近议会多数，但最终结果尚未公布。</p><p class="meta">rss · France 24 · 10月28日 10:20</p><p class="tags"><span class="tag">#以色列选举</span><span class="tag">#内塔尼亚胡</span><span class="tag">#中东政治</span><span class="tag">#议会多数</span></p></div></article>
+<article class="item rv" id="item-world-news-7"><div class="idx">07</div><div class="ibody"><div class="itop"><h3><a href="https://www.france24.com/en/spain-local-authorities-confirm-at-least-10-dead-in-train-accident" rel="noopener">西班牙：地方当局确认火车事故至少 10 人死亡</a></h3><span class="sc s7">7.0</span></div><p class="ov">西班牙南部马德里至塞维利亚铁路线上两列火车相撞，地方当局确认至少 10 人死亡，部分媒体称伤亡人数可能更高。</p><p class="meta">rss · France 24 · 10月28日 10:17</p><p class="tags"><span class="tag">#西班牙</span><span class="tag">#火车事故</span><span class="tag">#重大灾难</span><span class="tag">#铁路安全</span><span class="tag">#伤亡事件</span></p></div></article>
+<article class="item rv" id="item-world-news-8"><div class="idx">08</div><div class="ibody"><div class="itop"><h3><a href="https://www.france24.com/en/video/20261028-israelis-await-final-election-results-as-netanyahu-remains-far-from-defeated" rel="noopener">以色列人等待最终选举结果，内塔尼亚胡远未落败</a></h3><span class="sc s7">7.0</span></div><p class="ov">以色列选举中阿拉伯主导政党表现突出，但反对派能否与其组建多数政府仍不确定，内塔尼亚胡尚未被明显击败。</p><p class="meta">rss · France 24 · 10月28日 10:12</p><p class="tags"><span class="tag">#以色列选举</span><span class="tag">#内塔尼亚胡</span><span class="tag">#巴勒斯坦议题</span><span class="tag">#中东政治</span></p></div></article>
+<article class="item rv" id="item-world-news-9"><div class="idx">09</div><div class="ibody"><div class="itop"><h3><a href="https://www.france24.com/en/video/20261028-spain-at-least-10-dead-in-crash-between-2-high-speed-trains" rel="noopener">西班牙：两列高速列车相撞至少 10 人死亡</a></h3><span class="sc s7">7.0</span></div><p class="ov">法国 24 台报道，西班牙托莱多省发生两列高速列车相撞事故，至少 10 人死亡，马德里至安达卢西亚方向铁路服务暂停。</p><p class="meta">rss · France 24 · 10月28日 10:11</p><p class="tags"><span class="tag">#西班牙</span><span class="tag">#高铁事故</span><span class="tag">#重大灾难</span><span class="tag">#交通中断</span></p></div></article>
+<article class="item rv" id="item-world-news-10"><div class="idx">10</div><div class="ibody"><div class="itop"><h3><a href="https://www.nytimes.com/live/2026/10/27/world/israel-elections" rel="noopener">以色列选举对手均称胜选，但结果远未明朗</a></h3><span class="sc s7">7.0</span></div><p class="ov">以色列选举计票尚未完成，内塔尼亚胡与反对派领袖艾森科特均表示将领导下一届政府，最终结果仍不明朗。</p><p class="meta">rss · 纽约时报 World · 10月28日 10:32</p><p class="tags"><span class="tag">#以色列选举</span><span class="tag">#内塔尼亚胡</span><span class="tag">#加迪·艾森科特</span><span class="tag">#中东政治</span></p></div></article>
+</section>
+<section class="sec" id="sec4" data-sec="4"><header class="sechead rv"><span class="secno">05</span><div><p class="kicker">WORLD · 11 条</p><h2>智能电动车</h2></div><span class="secavg">均分 6.3</span></header><article class="item rv" id="item-smart-ev-1"><div class="idx">01</div><div class="ibody"><div class="itop"><h3><a href="https://electrek.co/2026/10/27/vws-ev-recall-spreads-to-audi-owners-told-stop-at-80-charge/" rel="noopener">大众电动车召回扩大至奥迪，车主被要求充电不超过 80%</a></h3><span class="sc s7">7.0</span></div><p class="ov">大众电动车召回范围扩大至奥迪 Q4 e-tron 和 Q4 Sportback e-tron，超过 9000 辆受影响车辆被建议将充电限制在 80%。</p><p class="meta">rss · Electrek · 10月27日 20:09</p><p class="tags"><span class="tag">#EV召回</span><span class="tag">#奥迪Q4 e-tron</span><span class="tag">#电池安全</span><span class="tag">#充电限制</span><span class="tag">#大众</span></p></div></article>
+<article class="item rv" id="item-smart-ev-2"><div class="idx">02</div><div class="ibody"><div class="itop"><h3><a href="https://www.ithome.com/1/019/132.htm" rel="noopener">大众计划 2027 年实现 L3 级自动驾驶功能就绪，正研发最高支持 L4 级能力系统级芯片 C7H</a></h3><span class="sc s7">7.0</span></div><p class="ov">大众汽车集团（中国）宣布计划 2027 年实现 L3 级自动驾驶功能就绪，并研发最高可支持 L4 的自研系统级芯片 C7H，同时已在合肥获得 L3 道路测试牌照。</p><p class="meta">rss · IT之家 · 10月28日 10:19</p><p class="tags"><span class="tag">#大众汽车</span><span class="tag">#自动驾驶</span><span class="tag">#L3</span><span class="tag">#芯片研发</span><span class="tag">#中国市场</span></p></div></article>
+<article class="item rv" id="item-smart-ev-3"><div class="idx">03</div><div class="ibody"><div class="itop"><h3><a href="https://www.ithome.com/1/019/102.htm" rel="noopener">软件定义汽车：大众 CEA 架构计划明年覆盖更多国产插电混动及燃油车，2029 年赋能 L4 自动驾驶开发</a></h3><span class="sc s7">7.0</span></div><p class="ov">大众汽车集团（中国）发布 VEGA 技术矩阵，称 CEA 电子电气架构将在 2026 年覆盖五款国产纯电车型，并计划 2027 年扩展至插混和燃油车，同时推进 L3 及 2029 年 L4 自动驾驶开发。</p><p class="meta">rss · IT之家 · 10月28日 09:55</p><p class="tags"><span class="tag">#大众汽车</span><span class="tag">#CEA架构</span><span class="tag">#软件定义汽车</span><span class="tag">#智能驾驶</span><span class="tag">#中国市场</span></p></div></article>
+<article class="item rv" id="item-smart-ev-4"><div class="idx">04</div><div class="ibody"><div class="itop"><h3><a href="https://cnevpost.com/2026/10/28/china-nev-retail-fall-oct-1-25/" rel="noopener">中国新能源汽车 10 月 1 日至 25 日零售销量下降 13%，旺季需求持续疲软</a></h3><span class="sc slo">6.0</span></div><p class="ov">10 月 1 日至 25 日中国新能源汽车零售销量约 75.3 万辆，环比 9 月同期下降 1%，显示旺季需求偏弱。</p><p class="meta">rss · CnEVPost · 10月28日 09:36</p><p class="tags"><span class="tag">#中国新能源汽车</span><span class="tag">#零售销量</span><span class="tag">#市场需求</span><span class="tag">#月度数据</span><span class="tag">#销量下滑</span></p></div></article>
+<article class="item rv" id="item-smart-ev-5"><div class="idx">05</div><div class="ibody"><div class="itop"><h3><a href="https://cnevpost.com/2026/10/28/catl-intilion-3-gwh-sodium-ion-storage/" rel="noopener">宁德时代与德国 Intilion 签约，五年部署 3GWh 钠离子储能</a></h3><span class="sc slo">6.0</span></div><p class="ov">宁德时代与德国 Intilion 签署协议，计划五年内在德国、瑞士和奥地利部署 3GWh 钠离子储能系统。</p><p class="meta">rss · CnEVPost · 10月27日 22:01</p><p class="tags"><span class="tag">#宁德时代</span><span class="tag">#钠离子电池</span><span class="tag">#储能</span><span class="tag">#欧洲市场</span><span class="tag">#供应链</span></p></div></article>
+<article class="item rv" id="item-smart-ev-6"><div class="idx">06</div><div class="ibody"><div class="itop"><h3><a href="https://electrek.co/2026/10/27/waymo-expansion-250-square-miles-five-cities/" rel="noopener">Waymo 在五个城市新增近 250 平方英里 Robotaxi 覆盖范围</a></h3><span class="sc slo">6.0</span></div><p class="ov">Waymo 宣布未来一周将在洛杉矶、纳什维尔、奥兰多、圣迭戈和旧金山湾区新增近 250 平方英里的无安全员 Robotaxi 服务区域。</p><p class="meta">rss · Electrek · 10月27日 19:55</p><p class="tags"><span class="tag">#Waymo</span><span class="tag">#Robotaxi</span><span class="tag">#自动驾驶</span><span class="tag">#运营扩张</span><span class="tag">#美国市场</span></p></div></article>
+<article class="item rv" id="item-smart-ev-7"><div class="idx">07</div><div class="ibody"><div class="itop"><h3><a href="https://electrek.co/2026/10/27/tesla-fsd-south-korea-police-80-illegal-unlock-devices/" rel="noopener">韩国警方就非法 FSD 解锁装置对 80 名特斯拉车主立案</a></h3><span class="sc slo">6.0</span></div><p class="ov">韩国首尔警方因使用非法装置解锁特斯拉 FSD 对 80 名车主立案，并查获 21 台相关设备。</p><p class="meta">rss · Electrek · 10月27日 15:43</p><p class="tags"><span class="tag">#自动驾驶监管</span><span class="tag">#特斯拉FSD</span><span class="tag">#韩国市场</span><span class="tag">#安全执法</span></p></div></article>
+<article class="item rv" id="item-smart-ev-8"><div class="idx">08</div><div class="ibody"><div class="itop"><h3><a href="https://insideevs.com/news/813508/rivian-van-outsold-r1s-r1t-competitors-combined-q3-2026/" rel="noopener">Rivian 电动厢式货车销量超过 R1S 与 R1T 总和</a></h3><span class="sc slo">6.0</span></div><p class="ov">据 InsideEVs 报道，Rivian 电动厢式货车在第三季度美国销量超过 R1S 与 R1T 总和，并位列美国最畅销电动车第四。</p><p class="meta">rss · InsideEVs · 10月28日 08:20</p><p class="tags"><span class="tag">#Rivian</span><span class="tag">#电动车销量</span><span class="tag">#美国市场</span><span class="tag">#厢式货车</span><span class="tag">#季度数据</span></p></div></article>
+<article class="item rv" id="item-smart-ev-9"><div class="idx">09</div><div class="ibody"><div class="itop"><h3><a href="https://insideevs.com/news/813443/chargepoint-solo-new-charger/" rel="noopener">ChargePoint 新款充电桩最高可达 750 kW，但这还不是它最大的亮点</a></h3><span class="sc slo">6.0</span></div><p class="ov">ChargePoint 发布 Express Solo 充电桩，宣称最高 750 kW 并支持在接入车辆间动态分配功率、降低安装成本。</p><p class="meta">rss · InsideEVs · 10月27日 17:11</p><p class="tags"><span class="tag">#充电网络</span><span class="tag">#超快充</span><span class="tag">#ChargePoint</span><span class="tag">#动态功率分配</span><span class="tag">#美国市场</span></p></div></article>
+<article class="item rv" id="item-smart-ev-10"><div class="idx">10</div><div class="ibody"><div class="itop"><h3><a href="https://www.ithome.com/1/019/145.htm" rel="noopener">大众升级“深耕中国，共赢全球”战略，计划 2030 年前在南美本土产品组合中率先引入中国研发技术</a></h3><span class="sc slo">6.0</span></div><p class="ov">大众汽车集团（中国）发布 VEGA 技术矩阵并升级全球战略，称中国正成为其全球创新与出口枢纽，计划 2030 年前率先在南美本土产品组合中引入中国研发技术。</p><p class="meta">rss · IT之家 · 10月28日 10:47</p><p class="tags"><span class="tag">#大众汽车</span><span class="tag">#中国研发</span><span class="tag">#全球战略</span><span class="tag">#新能源</span><span class="tag">#出口市场</span></p></div></article>
+<article class="item rv" id="item-smart-ev-11"><div class="idx">11</div><div class="ibody"><div class="itop"><h3><a href="https://www.ithome.com/1/019/114.htm" rel="noopener">大众推出首款自研全场景 L2++ 级高级驾驶辅助解决方案，支持城市及高速 NOA、全场景泊车辅助</a></h3><span class="sc slo">6.0</span></div><p class="ov">大众汽车集团（中国）发布自研全场景 L2++ 智驾方案 Hyper Sense 8，支持城市与高速 NOA 及全场景泊车，并将搭载于七款电动化产品。</p><p class="meta">rss · IT之家 · 10月28日 10:04</p><p class="tags"><span class="tag">#大众中国</span><span class="tag">#智能驾驶</span><span class="tag">#L2++</span><span class="tag">#NOA</span><span class="tag">#电动化</span></p></div></article>
+</section>
+
+</main>
+<div class="band"><div class="bandin"><div><h2>往期日报</h2><p>所有往期按日期存档，错过哪天补哪天。</p></div><a href="../../../archive.html">去看存档 →</a></div></div>
+<footer><p>Horizon 每日速递 · 2026-10-28 · 从 839 条内容中筛选出 29 条重要资讯。</p>
+<p><a href="../../../uptime.html">日报上线时间</a> · 每期实际上线时间统计</p>
+<p>版式：编辑风 v2（2026-10-25 定版，纸白 + 编辑红 + 衬线标题 + 栏目编号索引 + 评分分档色签）。</p></footer>
+<button id="topBtn" aria-label="回到顶部">↑ 顶部</button>
+<script>
+(function(){
+  var prog=document.getElementById('prog'), topBtn=document.getElementById('topBtn');
+  addEventListener('scroll',function(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    prog.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+    topBtn.classList.toggle('show', h.scrollTop>900);
+  },{passive:true});
+  topBtn.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+  var chips=document.querySelectorAll('.chip');
+  chips.forEach(function(ch){ ch.addEventListener('click',function(){
+    chips.forEach(function(c){c.setAttribute('aria-pressed','false')});
+    ch.setAttribute('aria-pressed','true');
+    var s=ch.dataset.sec;
+    document.querySelectorAll('section.sec').forEach(function(sec){
+      sec.classList.toggle('hidden', s!=='-1' && sec.dataset.sec!==s);
+    });
+    if(s!=='-1') document.getElementById('sec'+s).scrollIntoView();
+  })});
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.05});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+    setTimeout(function(){document.querySelectorAll('.rv:not(.on)').forEach(function(el){el.classList.add('on')})},2000);
+  } else { document.querySelectorAll('.rv').forEach(function(el){el.classList.add('on')}); }
+  addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true})});
+})();
+</script>
+</body></html>
