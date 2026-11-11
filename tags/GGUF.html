@@ -35,6 +35,10 @@ footer{max-width:1020px;margin:0 auto;padding:30px 24px 44px;color:var(--mut);fo
 footer a{color:var(--link)}
 @media (max-width:820px){.row{flex-wrap:wrap;gap:6px} .trow{flex-wrap:wrap;gap:6px}}
 @media print{.nav{display:none} body{background:#fff}}
+</style><style>
+.dfbar{margin:18px 0 0;padding:10px 14px;border:1px solid var(--line);border-left:3px solid var(--acc);background:var(--card);border-radius:8px;font-size:14px}
+.dfbar a{color:var(--link)}
+@media print{.dfbar{display:none}}
 </style></head><body>
 <header class="nav"><div class="navin"><a class="wordmark" href="../index.html">HORIZON<i>.</i></a></div></header>
 <main class="wrap">
@@ -43,9 +47,26 @@ footer a{color:var(--link)}
   <h1>#GGUF</h1>
   <p class="sub">共 2 篇 · 跨 2 天 · 来自 Horizon 每日速递。点标题跳到那一天的日报原文位置。</p>
 </div>
-<h2 class="dhead">2026 年 11 月 11 日<span class="wd">星期三</span></h2><div class="row"><time class="dt">2026-11-11</time><span class="sec">科技博客</span><a class="ttl" href="../2026/11/11/summary-zh.html#item-tech-blog-13">小模型 MoE 在事实链推理上的意外胜出</a><span class="sc s7">7.0</span></div><h2 class="dhead">2026 年 10 月 30 日<span class="wd">星期五</span></h2><div class="row"><time class="dt">2026-10-30</time><span class="sec">科技新闻</span><a class="ttl" href="../2026/10/30/summary-zh.html#item-tech-news-14">llama.cpp b11988 新增 Limite 1B - Violetto 模型支持</a><span class="sc s7">7.0</span></div>
+<div class="dfbar" id="dfbar" hidden></div>
+<h2 class="dhead" data-date="2026-11-11">2026 年 11 月 11 日<span class="wd">星期三</span></h2><div class="row" data-date="2026-11-11"><time class="dt">2026-11-11</time><span class="sec">科技博客</span><a class="ttl" href="../2026/11/11/summary-zh.html#item-tech-blog-13">小模型 MoE 在事实链推理上的意外胜出</a><span class="sc s7">7.0</span></div><h2 class="dhead" data-date="2026-10-30">2026 年 10 月 30 日<span class="wd">星期五</span></h2><div class="row" data-date="2026-10-30"><time class="dt">2026-10-30</time><span class="sec">科技新闻</span><a class="ttl" href="../2026/10/30/summary-zh.html#item-tech-news-14">llama.cpp b11988 新增 Limite 1B - Violetto 模型支持</a><span class="sc s7">7.0</span></div>
 </main>
 <footer><p><a href="index.html">关键词索引</a> · <a href="../index.html">日报首页</a></p>
 <p>Horizon 每日速递 · 关键词穿透/联查（精确匹配标签）</p></footer>
+<script>
+(function(){
+  var m=/[?&]d=(\d{4}-\d{2}-\d{2})/.exec(location.search);
+  if(!m) return;
+  var d=m[1];
+  var rows=[].slice.call(document.querySelectorAll('.row[data-date]'));
+  var hit=rows.filter(function(r){return r.getAttribute('data-date')===d;});
+  if(!hit.length) return;
+  rows.forEach(function(r){if(r.getAttribute('data-date')!==d) r.style.display='none';});
+  document.querySelectorAll('.dhead[data-date]').forEach(function(h){if(h.getAttribute('data-date')!==d) h.style.display='none';});
+  var bar=document.getElementById('dfbar');
+  if(bar){ bar.hidden=false;
+    bar.innerHTML='\u53ea\u770b <b>'+d+'</b> \u8fd9\u4e00\u5929\u7684 '+hit.length+' \u7bc7 \u00b7 <a href="'+location.pathname.split('/').pop()+'">\u67e5\u770b\u5168\u90e8\u65e5\u671f</a>';
+  }
+})();
+</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "f890758e55844d498ac5336782eac0f5"}'></script>
 </body></html>
