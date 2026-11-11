@@ -87,6 +87,7 @@ footer a{color:var(--link)}
 <a class="topcard rv" href="https://antelang.org/blog/safe_cyclic_mutability/" rel="noopener"><p class="tc-col">科技博客 · <span class="sc s8">8.0</span></p><h3>零成本循环可变性借用检查</h3><p class="tc-ov"><strong>「背景」</strong> Rust 的借用检查器通过确保同一时刻只有一个可变引用，防止了数据竞争，但也使得构建循环可变数据结构（如双向链表或图）变得困难。作者提出，现有的解决方案要么引入运行时开销（如引用计数或内部可变性），要么牺牲安全性，因此需要一种既能保持零成本抽象又能安全处理循环引用的方法。</p></a>
 </div>
 </div>
+
 <div class="filters" role="group" aria-label="按栏目筛选"><span class="fl">只看：</span>
   <button class="chip" aria-pressed="true" data-sec="-1">全部栏目</button><button class="chip" aria-pressed="false" data-sec="0">科技新闻 29</button><button class="chip" aria-pressed="false" data-sec="1">科技博客 5</button><button class="chip" aria-pressed="false" data-sec="2">国内重要新闻 4</button><button class="chip" aria-pressed="false" data-sec="3">国际焦点 11</button><button class="chip" aria-pressed="false" data-sec="4">智能电动车 1</button>
 </div>
@@ -179,5 +180,6 @@ footer a{color:var(--link)}
   addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true})});
 })();
 </script>
+
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "f890758e55844d498ac5336782eac0f5"}'></script>
 </body></html>
